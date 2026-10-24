@@ -40,7 +40,7 @@ func test_skill_cost_cooldown_and_out_of_range() -> void:
 	var run: ArenaRun = new_run()
 	run.cast_whirlwind()
 	assert_eq(run.mana, run.rules.mana - run.rules.skill_cost)
-	assert_eq(run.enemies[0].hp, run.rules.enemy_health)
+	assert_eq(run.enemies[0].health.current(), run.rules.enemy_health)
 	run.cast_whirlwind()
 	assert_eq(run.mana, run.rules.mana - run.rules.skill_cost)
 
@@ -56,7 +56,7 @@ func test_skill_rejects_insufficient_mana() -> void:
 func test_kill_rewards_once_and_loot_is_not_duplicated() -> void:
 	var run: ArenaRun = new_run()
 	run.player = run.enemies[0].pos
-	run.enemies[0].hp = 1.0
+	run.enemies[0].health.damage(run.rules.enemy_health - 1.0)
 	run.cast_whirlwind()
 	assert_eq(run.kills, 1)
 	assert_eq(run.xp, run.rules.xp_per_enemy)
@@ -124,14 +124,14 @@ func test_fixed_seed_reproduces_basic_combat() -> void:
 		b.tick()
 	assert_eq(a.health, b.health)
 	assert_eq(a.kills, b.kills)
-	assert_eq(a.enemies[0].hp, b.enemies[0].hp)
+	assert_eq(a.enemies[0].health.current(), b.enemies[0].health.current())
 
 
 func test_clear_arena_levels_up_and_does_not_reward_dead_enemies_again() -> void:
 	var run: ArenaRun = new_run()
 	for i: int in run.enemies.size():
 		run.player = run.enemies[i].pos
-		run.enemies[i].hp = 1.0
+		run.enemies[i].health.damage(run.rules.enemy_health - 1.0)
 		run.mana = run.rules.mana
 		run.skill_left = 0
 		run.cast_whirlwind()

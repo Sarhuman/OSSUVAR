@@ -133,6 +133,6 @@ func _draw_map(at: Vector2) -> void:
 	for wall: Vector2i in run.walls:
 		draw_rect(Rect2(at + Vector2(wall) * 6.0, Vector2(5, 5)), Color("737662"))
 	for enemy: Dictionary in run.enemies:
-		if enemy.hp > 0.0:
+		if not enemy.health.is_dead():
 			draw_circle(at + enemy.pos * 6.0, 2, Color("ae644c"))
 	draw_circle(at + run.player * 6.0, 3, accent)

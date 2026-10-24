@@ -59,7 +59,7 @@ func _draw() -> void:
 	for cell: Vector2i in run.walls:
 		actors.append({"pos": Vector2(cell), "type": "wall"})
 	for enemy: Dictionary in run.enemies:
-		if enemy.hp <= 0.0:
+		if enemy.health.is_dead():
 			_bones(IsoMath.project(enemy.pos))
 		else:
 			actors.append({"pos": enemy.pos, "type": "enemy", "data": enemy})
@@ -206,9 +206,12 @@ func _skeleton(at: Vector2, enemy: Dictionary) -> void:
 	draw_circle(Vector2(0, -29), 5, bone)
 	draw_circle(Vector2(-2, -30), 1.2, Color("383b32"))
 	draw_circle(Vector2(2, -30), 1.2, Color("383b32"))
-	if enemy.hp < run.rules.enemy_health:
+	if enemy.health.current() < enemy.health.maximum():
 		draw_rect(Rect2(-13, -43, 26, 3), Color("282320"))
-		draw_rect(Rect2(-13, -43, 26 * enemy.hp / run.rules.enemy_health, 3), Color("a45c47"))
+		draw_rect(
+			Rect2(-13, -43, 26 * enemy.health.current() / enemy.health.maximum(), 3),
+			Color("a45c47")
+		)
 	draw_set_transform(Vector2.ZERO)
 
 
