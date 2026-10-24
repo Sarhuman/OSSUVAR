@@ -1,109 +1,117 @@
-# OSSUVAR — Os Treze Sinos
+# OSSUVAR: Os Treze Sinos
 
 > Um sino tocou onde não devia. Agora os mortos de Ossuvar não descansam, e você é o último coveiro de uma ordem que já não existe.
 
-ARPG de fantasia sombria, inteiramente **2D**, com visão isométrica 2:1, combate com peso, progressão de personagem e loot como recompensa.
+ARPG de fantasia sombria em **2D isométrico**, planejado para **Godot 4**, com combate de peso, progressão de personagem e loot como recompensa.
 
-**Estado:** planejamento inicial. As funcionalidades abaixo representam o escopo previsto, não entregas implementadas.
+> **Estado: pré-produção.** Este repositório contém somente documentação. Não há código, protótipo nem build jogável. Tudo o que é descrito abaixo como jogo é **planejado** e pode mudar.
+
+## Estado do projeto
+
+| Área | Estado |
+| --- | --- |
+| Documentação de design e arquitetura | Publicada no PR #1, em revisão |
+| M0, Fundação (projeto, CI, `CombatMath`) | Planejado; o início depende de autorização formal (tarefa T-001) |
+| Combate, loot, skills, mundo e interface | Planejado |
+| Build jogável | Não existe |
+
+**Legenda.** *Planejado*: descrito em documento, sem código. *Em andamento*: existe PR draft com trabalho aberto. *Implementado*: PR integrado, testes executados e resultado validado no Editor do Godot. No momento, nenhum item está em *Em andamento* ou *Implementado*.
+
+## O jogo
+
+OSSUVAR busca a sensação dos ARPGs clássicos: ações com duração e consequência, chance de acertar, bloqueio, resistências elementais, builds por atributos e árvore de skills, e loot com raridades e afixos. A visão é isométrica 2:1, com um mundo sombrio e legível, onde a história é contada por itens, chefes e ambientes.
 
 ## História
 
-O reino de **Norvhal** foi erguido sobre o ossário de um deus que morreu antes dos homens. No centro dele fica **Ossuvar**, a cidade-catedral. Seus **Treze Sinos** eram tocados a cada morte para guiar os mortos ao descanso. Foi assim por trezentos anos.
+O reino de **Norvhal** cresceu em torno de **Ossuvar**, a cidade-catedral cujos **Treze Sinos** eram tocados a cada morte para guiar os mortos ao descanso. Durante trezentos anos, funcionou. Então alguém fundiu um **Décimo Quarto Sino** e o tocou. Desde então ninguém parte: os mortos sobem, a terra apodrece e a cidade espera o fim.
 
-**Irrik Vael**, o Sineiro-Mor, perdeu a esposa e mandou fundir um **Décimo Quarto Sino** com ossos do deus sepultado. Ao tocá-lo, ela voltou. Os outros mortos também. Agora ninguém parte: os mortos sobem, a terra apodrece, e a cidade tocou o próprio fim.
+Você é um **Penitente**, último jurado da **Ordem do Pó**, coveiros-guerreiros que enterravam e selavam os mortos inquietos. Seu mestre desapareceu na **Cripta dos Pranteadores**. Para encontrá-lo, você atravessará quatro atos, das cinzas de Norvhal ao coração da cidade.
 
-O jogador é um **Penitente**, último jurado da **Ordem do Pó**, formada por coveiros-guerreiros que enterravam e selavam os mortos inquietos. Seu mestre, **Halric**, desceu à **Cripta dos Pranteadores** para investigar o sino e voltou respondendo a ele. Você parte atrás de Halric e descobre, ato a ato, que o sino revela algo maior.
+| Ato | Nome | Ambientação |
+| --- | --- | --- |
+| I | Cinzas de Norvhal | Acampamento Vigília de Cal, campos calcinados, bosque, mosteiro e cripta |
+| II | O Afogadouro | Ossário inundado sob a cidade |
+| III | Os Dentes | Mina de ossos nas montanhas |
+| IV | O Campanário | Os níveis mais altos da cidade-catedral |
 
-### Atos planejados
-
-| Ato | Nome | Ambientação | Chefe |
-| --- | --- | --- | --- |
-| I | Cinzas de Norvhal | Vigília de Cal, Campos Calcinados, Bosque dos Enforcados, Mosteiro Sem Voz e Cripta dos Pranteadores | Mãe Orwyn, a Pranteadora |
-| II | O Afogadouro | Ossário inundado sob a cidade; maldições e afogados | A definir |
-| III | Os Dentes | Mina de ossos nas montanhas; construtos e ferreiros mortos | A definir |
-| IV | O Campanário | Subida final até o Décimo Quarto Sino | Irrik Vael |
-
-<details>
-<summary>Spoilers — reviravolta e finais em esboço</summary>
-
-Os Treze Sinos nunca guiaram os mortos: eles prendiam o deus sepultado, e o Décimo Quarto o acordou.
-
-O final prevê duas escolhas: silenciar todos os sinos, permitindo que os mortos descansem, mas despertando o deus; ou tocar o último sino sob seu controle, contendo o deus e transformando o Penitente no novo Sineiro-Mor.
-
-Este esboço será detalhado no marco M4.
-
-</details>
-
-### Personagens do acampamento
-
-- **Dagna:** ferreira de cabeça raspada que conserta e vende armas.
-- **Irmã Cael:** curandeira que perdeu a fé e vende poções.
-- **Velho Tobbe:** mercador e jogador de dados que oferece itens misteriosos.
-- **O Corvo Mudo:** guardião do baú compartilhado e dos Marcos de Cal.
-
-### Bestiário do Ato I
-
-Esqueleto Calcinado (corpo a corpo), Enforcado (rápido e frágil), Cão-de-Cinza (ataca em bando), Carpideiro (conjurador que cura aliados) e Sacristão (invocador).
+No acampamento Vigília de Cal você encontra a ferreira Dagna, a curandeira Irmã Cael, o mercador Velho Tobbe e o Corvo Mudo, guardião dos Marcos de Cal.
 
 ## Pilares de design
 
-1. **Combate com peso:** duração, compromisso e recuperação em cada ação; chance de acertar, bloqueio e resistências relevantes.
-2. **Build importa:** atributos, árvore de skills com sinergias e equipamentos que alteram o estilo de jogo.
-3. **Loot é a recompensa:** raridades, afixos, sockets, itens únicos e Palavras de Sino.
-4. **Mundo hostil e legível:** poucas palavras; história transmitida por itens, chefes e ambientes.
+1. **Combate com peso:** cada ação tem duração, compromisso e recuperação.
+2. **Build importa:** atributos, árvore de skills com sinergias e equipamentos que mudam o estilo de jogo.
+3. **Loot é a recompensa:** raridades, afixos, sockets e itens únicos.
+4. **Mundo hostil e legível:** poucas palavras, muita atmosfera.
 5. **Rejogabilidade:** áreas procedurais por semente, ciclos de dificuldade e chefes repetíveis.
 
-## Escopo previsto
+## Escopo previsto do MVP
 
-O MVP contempla uma classe, o **Penitente**, o **Ato I completo**, loot completo e **12 skills**. A arquitetura prevê três ciclos de dificuldade.
+*Planejado e sujeito a revisão.*
 
-| Árvore do Penitente | Skills |
-| --- | --- |
-| Ferro — ataque | Golpe Contundente, Giro Ceifador, Investida do Penitente, Estilhaçar |
-| Cal — defesa e auras | Escudo de Cal, Aura de Resolução, Postura Inabalável, Grito Funerário |
-| Cinza — fogo e maldições | Chama do Réquiem, Marca da Cinza, Pira, Sopro de Cinzas |
+- Uma classe jogável, o **Penitente**, com 12 skills em três árvores: Ferro (ataque), Cal (defesa e auras) e Cinza (fogo e maldições).
+- Ato I completo: acampamento, quatro áreas, uma masmorra e um chefe.
+- Recursos Vida, Mana e Vigor; atributos Força, Destreza, Vitalidade e Energia.
+- Loot completo: raridades, afixos, sockets e inventário em grade.
+- Mapas procedurais por semente, com salas especiais fixas.
+- Ciclos de dificuldade previstos na arquitetura; entrega prevista para o M5.
 
-- **Recursos:** Vida, Mana e Vigor.
-- **Atributos:** Força, Destreza, Vitalidade e Energia; cada nível concede cinco pontos de atributo e um ponto de skill.
-- **Itens:** Normal, Mágico, Raro, Único e Conjunto; afixos, requisitos, durabilidade e sockets para Selos. Combinações ordenadas formam Palavras de Sino.
-- **Inventário:** grade de itens; baú compartilhado previsto para M4.
-- **Mundo:** geração por semente com salas especiais fixas, Marcos de Cal e Fresta para retorno ao acampamento.
-- **Combate:** tick fixo a 25 Hz, recuperação de acerto e chefes com fases e aviso visual antes dos golpes.
+## Tecnologia prevista
 
-### Controles planejados para PC
+*Definições do Tech Lead, ainda sem implementação.*
 
-| Entrada | Ação |
-| --- | --- |
-| Botão esquerdo | Mover, atacar ou usar a skill esquerda |
-| Shift | Atacar parado |
-| Botão direito | Skill direita |
-| Teclas 1–4 | Poções do cinto |
-| Tab | Automapa |
-| I / C / S | Inventário / atributos / skills |
+- Godot 4.7.2, GDScript tipado e renderer Compatibility.
+- Exclusivamente 2D: tiles 64×32, oito direções, nenhum asset ou cena 3D.
+- Lógica de combate em código puro e testável, separada das cenas.
+- Testes headless com GUT, lint com gdtoolkit e integração contínua no GitHub Actions.
+- Arte provisória até o M3; metas de desempenho só após o benchmark do M1.
 
-## Diretrizes técnicas
+Detalhes de fórmulas, arquitetura e regras de trabalho estão no [Documento Mestre](docs/DOCUMENTO_MESTRE.md).
 
-Conforme o documento mestre, a stack definida é **Godot 4.7.2**, renderer **Compatibility** e **GDScript tipado**. O projeto é exclusivamente 2D, com tiles **64×32**, oito direções e nenhuma cena ou asset 3D.
+## Roadmap
 
-A arquitetura prevê lógica pura separada de cenas, composição por componentes, dados em Resources, comunicação por sinais e EventBus, IsoMath para conversões isométricas, AStarGrid2D para caminhos, RNG central com sementes e save JSON versionado.
+*Sem datas. Cada marco só é concluído após homologação.*
 
-Testes headless com **GUT**, lint e formatação com **gdtoolkit** e CI no GitHub Actions estão previstos. Placeholders serão usados até M3; metas numéricas de desempenho dependem do benchmark em M1.
-
-## Marcos planejados
-
-| Marco | Entrega | Critério de conclusão |
+| Marco | Entrega prevista | Estado |
 | --- | --- | --- |
-| M0 — Fundação | Projeto, CI e CombatMath testado | Testes verdes no CI; projeto abre sem erros |
-| M1 — Combate core | Arena: andar, atacar, morrer e subir de nível | Combate aprovado em jogo e benchmark realizado |
-| M2 — Loot | Itens, afixos, inventário e equipamentos | Drops funcionam e alteram atributos |
-| M3 — Skills | As 12 skills do Penitente e primeira arte real | Skills em dados, custos e cooldowns corretos |
-| M4 — Ato I | Mapas, acampamento, NPCs, chefe e save | Ato I jogável do começo ao fim |
-| M5 — Polimento | Ciclos II e III, Ato II e balanceamento | A definir após M4 |
+| M0, Fundação | Projeto, CI e `CombatMath` testado | Planejado |
+| M1, Combate core | Arena jogável: andar, atacar, morrer e subir de nível | Planejado |
+| M2, Loot | Itens, afixos, inventário e equipamentos | Planejado |
+| M3, Skills | As 12 skills do Penitente e a primeira arte real | Planejado |
+| M4, Ato I | Mapas, acampamento, NPCs, chefe e save | Planejado |
+| M5, Polimento | Ciclos de dificuldade, Ato II e balanceamento | A definir após o M4 |
 
-## Gestão e documentação
+## Como executar
 
-**Claude é o Tech Lead e Product Owner:** gerencia o projeto, decide design e arquitetura e homologa as entregas. **Codex atua como executor de tarefas explicitamente delimitadas**, uma por vez, em PR draft e sem merge automático. A validação prática ocorre no Editor pelo responsável pelo projeto.
+Ainda não é possível executar o jogo. Quando o M0 for integrado, esta seção explicará como abrir o projeto no Godot 4.7.2 e rodar os testes.
 
-O [Documento Mestre v0.1](docs/DOCUMENTO_MESTRE.txt), de 24/10/2026, preserva o material recebido: história, fórmulas, arquitetura, regras de trabalho, backlog T-001 a T-012 e decisões abertas. Sua inclusão é documental; não inicia o bootstrap T-001.
+## Gestão e papéis
 
-As decisões registradas como abertas no documento — HUD, aprovação formal do nome e premissa, e início da T-001 — permanecem sob gestão do Claude e aprovação do responsável pelo projeto.
+| Papel | Quem | Responsabilidades |
+| --- | --- | --- |
+| Responsável pelo projeto | @Sarhuman | Dono do repositório. Aprova decisões formais, autoriza o início de cada tarefa, valida o resultado no Editor do Godot e faz o merge. Executa as alterações documentais definidas pelo Tech Lead. |
+| Tech Lead e Product Owner | Claude (assistente de IA da Anthropic) | Define design, arquitetura, backlog e critérios de aceite; revisa as entregas e recomenda sua homologação; mantém o registro de decisões. Atua por conversa com o responsável, sem acesso de escrita ao repositório nem ao Editor. |
+| Executor | Codex (agente de código da OpenAI) | Implementa uma tarefa delimitada por vez, em PR draft, sem merge automático, e entrega relatório com arquivos alterados, testes executados e pontos a validar no Editor. Não decide design nem arquitetura; dúvidas vão na seção "Perguntas" do PR. |
+
+**Fluxo.** Uma tarefa corresponde a um PR pequeno. A próxima tarefa dependente só é liberada depois da revisão do Tech Lead e da validação prática do responsável. Uma decisão só vale quando registrada em [docs/DECISOES.md](docs/DECISOES.md).
+
+## Documentação
+
+- [Documento Mestre v0.1](docs/DOCUMENTO_MESTRE.md): visão de design, fórmulas de combate, arquitetura, regras de trabalho e backlog T-001 a T-012. **Contém spoilers da história.**
+- [Registro de decisões](docs/DECISOES.md): o que está fechado, o que é proposta e o que está em aberto.
+
+## Decisões em aberto e itens não aprovados
+
+Os itens abaixo **não são decisões fechadas**; o status completo está em [docs/DECISOES.md](docs/DECISOES.md).
+
+- Nome definitivo e verificação de marca.
+- Autorização formal para iniciar a T-001.
+- Chefes dos Atos II e III e desfecho da história.
+- Licença do projeto.
+
+## Contribuições, licença e créditos
+
+Por ora o trabalho é conduzido pelo responsável do projeto e pelo executor, sob a gestão do Tech Lead; não há processo para contribuições externas.
+
+**Licença:** a definir pelo responsável do projeto. Enquanto não houver um arquivo `LICENSE`, o conteúdo deste repositório não é de uso livre.
+
+OSSUVAR é um projeto independente, inspirado no gênero ARPG clássico, e não tem vínculo com os títulos que o inspiram.
