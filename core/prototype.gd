@@ -131,7 +131,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			var point: Vector2 = view.get_global_mouse_position()
 			for i: int in run.enemies.size():
 				var at: Vector2 = IsoMath.project(run.enemies[i].pos) + Vector2(0, -18)
-				if run.enemies[i].hp > 0.0 and point.distance_to(at) < 23:
+				if not run.enemies[i].health.is_dead() and point.distance_to(at) < 23:
 					run.attack_enemy(i)
 					return
 			run.walk_to(Vector2i(IsoMath.unproject(point).round()))

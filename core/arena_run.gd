@@ -60,7 +60,7 @@ func _init(config: ArenaRules) -> void:
 		enemies.append(
 			{
 				"pos": Vector2(cell),
-				"hp": rules.enemy_health,
+				"health": HealthComponent.new(rules.enemy_health),
 				"cooldown": 0,
 				"flash": 0,
 				"path": [],
@@ -87,7 +87,7 @@ func walk_to(cell: Vector2i) -> void:
 
 
 func attack_enemy(index: int) -> void:
-	if index < 0 or index >= enemies.size() or enemies[index].hp <= 0.0:
+	if index < 0 or index >= enemies.size() or enemies[index].health.is_dead():
 		return
 	walk_to(Vector2i(enemies[index].pos.round()))
 	target = index
@@ -101,7 +101,7 @@ func tick() -> void:
 	attack_flash = maxi(0, attack_flash - 1)
 	skill_flash = maxi(0, skill_flash - 1)
 	mana = minf(rules.mana, mana + STEP * 2.0)
-	if target >= 0 and enemies[target].hp > 0.0:
+	if target >= 0 and not enemies[target].health.is_dead():
 		if player.distance_to(enemies[target].pos) <= 1.45:
 			path.clear()
 			if attack_left == 0:
@@ -128,7 +128,7 @@ func tick() -> void:
 
 func _update_enemy(enemy: Dictionary) -> void:
 	enemy.flash = maxi(0, int(enemy.flash) - 1)
-	if enemy.hp <= 0.0:
+	if enemy.health.is_dead():
 		return
 	enemy.cooldown = maxi(0, int(enemy.cooldown) - 1)
 	var distance: float = enemy.pos.distance_to(player)
@@ -160,13 +160,21 @@ func _update_enemy(enemy: Dictionary) -> void:
 
 
 func _hurt(index: int, damage: int) -> void:
-	var enemy: Dictionary = enemies[index]
-	if enemy.hp <= 0.0:
-		return
-	enemy.hp = maxf(0.0, float(enemy.hp) - damage)
+	apply_enemy_hit(EnemyHit.new(index, damage))
+
+
+func apply_enemy_hit(hit: EnemyHit) -> HealthComponent.Result:
+	if hit == null or hit.target_index < 0 or hit.target_index >= enemies.size():
+		return HealthComponent.Result.new()
+	if not hit.consume():
+		return HealthComponent.Result.new()
+	var enemy: Dictionary = enemies[hit.target_index]
+	var result: HealthComponent.Result = enemy.health.damage(hit.damage)
+	if not result.accepted:
+		return result
 	enemy.flash = 5
-	feedback.emit(enemy.pos, str(damage), "hit")
-	if enemy.hp == 0.0:
+	feedback.emit(enemy.pos, str(int(hit.damage)), "hit")
+	if result.died_now:
 		kills += 1
 		xp += rules.xp_per_enemy
 		drops.append({"pos": enemy.pos, "name": "Ferro funerário", "taken": false})
@@ -178,6 +186,8 @@ func _hurt(index: int, damage: int) -> void:
 		notice = "Aproxime-se do drop e pressione E para recolher."
 		if kills == enemies.size():
 			notice = "A Vigília está segura. Arena concluída! R: nova partida."
+
+	return result
 
 
 func cast_whirlwind() -> void:
