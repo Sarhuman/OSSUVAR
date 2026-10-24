@@ -1,6 +1,6 @@
 # OSSUVAR — Os Treze Sinos
 
-> Um sino tocou onde não devia. Agora os mortos de Ossuvar não descansam, e você é o último coveiro de uma ordem que já não existe.
+> Você jurou guardar os mortos. Agora precisa descobrir quem os mantém presos.
 
 ARPG de fantasia sombria em **2D isométrico**, com **Diablo II como referência
 central de experiência** e Project Diablo 2 como referência adicional para mapas
@@ -14,7 +14,7 @@ não significam integração ou homologação no Editor.
 
 | Frente | Estado e localização |
 | --- | --- |
-| Página principal e narrativa | Documentação nesta branch; versão editorial v0.2, revisão do Claude pendente |
+| Página principal e narrativa | Documentação nesta branch; direção narrativa v0.3 fornecida pelo responsável; cenas e gameplay ainda não implementados |
 | Proposta documental original | [PR #1](https://github.com/Sarhuman/OSSUVAR/pull/1); conciliar com a documentação atual antes de integrar |
 | Bootstrap Godot, GUT e CI | [PR #2](https://github.com/Sarhuman/OSSUVAR/pull/2), em revisão |
 | Arena experimental | [PR #3](https://github.com/Sarhuman/OSSUVAR/pull/3), baseado na branch do PR #2 |
@@ -37,26 +37,29 @@ tiers e objetivos próprios depois de suas regras serem definidas.
 
 ## História
 
-O reino de **Norvhal** cresceu ao redor de **Ossuvar**, a cidade-catedral. Por
-trezentos anos, seus **Treze Sinos** acompanharam os funerais e a promessa de
-descanso. Então um **Décimo Quarto Sino** foi fundido e tocado. Os mortos
-começaram a responder, e as estradas deixaram de levar a lugares seguros.
+Por trezentos anos, Norvhal acreditou que os **Treze Sinos** de **Ossuvar**
+conduziam os mortos ao descanso. Agora um **Décimo Quarto Sino** foi tocado,
+os túmulos se abriram e algumas vozes parecem repetir aquilo que ninguém quis ouvir.
 
-Você é um **Penitente**, último jurado vivo da **Ordem do Pó**, formada por
-coveiros-guerreiros que enterravam e selavam os mortos inquietos. As últimas
-notícias de seu mestre, **Halric**, levam à Cripta dos Pranteadores. Procurá-lo
-significa descobrir o que sua ordem protegeu e o que escolheu esconder.
+Durante uma última vigília, chega uma carta de **Halric**, mestre do protagonista,
+pedindo que ele vá à Cripta dos Pranteadores e desconfie da história oficial.
+Você é um **Penitente da Ordem do Pó**. Buscar o mestre significa descobrir
+para que seu juramento foi criado e o que os vivos escolheram esconder.
 
 | Ato planejado | Região |
 | --- | --- |
-| I — Cinzas de Norvhal | Arredores da cidade, bosque, rota dos ossários, mosteiro e cripta |
-| II — O Afogadouro | Ossário inundado sob a cidade |
+| I — Cinzas de Norvhal | Campos, bosque, Estrada dos Ossários, mosteiro e cripta |
+| II — O Afogadouro | Ossário inundado, galerias e comportas sob a cidade |
 | III — Os Dentes | Minas de ossos nas montanhas |
-| IV — O Campanário | A cidade-catedral e seus níveis mais altos |
+| IV — O Campanário | Cidade-catedral e seus níveis mais altos |
 
-O acampamento **Vigília de Cal** reúne Dagna, Irmã Cael, Velho Tobbe e o Corvo
-Mudo. Cada sobrevivente oferece um modo diferente de enfrentar o que restou.
-Revelações, chefes posteriores e finais ficam nos documentos com aviso de spoilers.
+Na **Vigília de Cal**, Dagna, Irmã Cael, Velho Tobbe e o Corvo Mudo têm passados
+ligados ao desastre. As alianças do acampamento influenciam quem chega ao final
+e como pode ajudar. Nem todo morto encontrado é imediatamente hostil.
+
+A pergunta central da campanha é: **os vivos têm o direito de decidir o que
+os mortos devem esquecer?** Revelações e possibilidades finais ficam nos
+documentos com aviso de spoilers.
 
 ## Pilares de design
 
@@ -72,7 +75,7 @@ Revelações, chefes posteriores e finais ficam nos documentos com aviso de spoi
 - **Um hub + quatro áreas hostis + uma masmorra + um chefe principal** no Ato I.
 - Áreas: Campos Calcinados, Bosque dos Enforcados, **Estrada dos Ossários** e
   Mosteiro Sem Voz; masmorra: Cripta dos Pranteadores. A estrada completa a
-  contagem na revisão narrativa v0.2, ainda sujeita à revisão editorial.
+  contagem preservada na direção narrativa v0.3 fornecida pelo responsável.
 - Força, Destreza, Vitalidade e Energia; Vida, Mana, Vigor e XP com **barras horizontais**.
 - Itens, inventário em grade, equipamento, afixos, Selos e Palavras de Sino.
 - Geração por seed, Marcos de Cal, Fresta, progressão e save versionado.
@@ -109,8 +112,9 @@ de combate. Nenhum executável é distribuído por esta atualização documental
 - [Estado das branches e integração](docs/ESTADO_PROJETO.md).
 - [Registro de decisões](docs/DECISOES.md).
 - [Documento Mestre v0.1](docs/DOCUMENTO_MESTRE.md) — histórico de design, arquitetura e backlog; **contém spoilers**.
-- [Bíblia narrativa v0.2](docs/NARRATIVA.md) — regras do mundo, personagens, atos e finais; **contém spoilers completos**.
-- [Missões do Ato I](docs/MISSOES_ATO_I.md) — objetivos, pistas e critérios narrativos; **contém spoilers do Ato I**.
+- [História expandida v0.3](docs/NARRATIVA.md) — regras do mundo, personagens, atos e finais; **contém spoilers completos**.
+- [Prólogo e missões do Ato I](docs/MISSOES_ATO_I.md) — objetivos, pistas e critérios narrativos; **contém spoilers**.
+- [Impacto da narrativa v0.3](docs/IMPACTO_NARRATIVO_V03.md) — diferenças em relação aos contratos e prompts anteriores.
 
 ## Gestão e próximos passos
 
@@ -128,3 +132,4 @@ Não usar o merge de documentação como autorização implícita para mesclar c
 Licença a definir pelo responsável; não há concessão de licença aberta nesta
 página. O fluxo de contribuições externas ainda não está definido. OSSUVAR é
 um projeto independente, sem vínculo com Diablo II ou Project Diablo 2.
+

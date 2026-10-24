@@ -1,69 +1,67 @@
-> **Contém spoilers do Ato I.** Especificação narrativa v0.2; IDs propostos para discussão com o Codex, ainda não implementados.
+> **Contém spoilers do prólogo e do Ato I.** Versão narrativa v0.3, de 24/10/2026. Substitui a cadeia da v0.2; implementação e contratos mecânicos continuam separados.
 
-# Ato I — Progressão de missões
+# Prólogo e Ato I — A última vigília
 
-## Fluxo principal
+## Fluxo narrativo
 
-`Vigília de Cal → Campos Calcinados → Bosque dos Enforcados → Estrada dos Ossários → Mosteiro Sem Voz → Cripta dos Pranteadores → Vigília de Cal`.
+Funeral de um Penitente → três batidas no caixão e silêncio dos Treze → chegada do mensageiro → carta de Halric → morte do mensageiro → busca pela cripta.
 
-Os IDs abaixo são identificadores documentais estáveis propostos. Se o código já possuir IDs equivalentes, preservar compatibilidade por mapeamento, sem renomear saves cegamente.
+A carta contém a orientação exata:
 
-| ID | Missão | Gatilho narrativo | Objetivo verificável | Conclusão e próximo passo |
-| --- | --- | --- | --- | --- |
-| act1_01_last_oath | O Último Juramento | Conversa inicial com Cael | Encontrar o posto funerário de Halric nos Campos | Bilhete indica que o mestre seguiu pelo bosque; investigar o trajeto |
-| act1_02_names_without_graves | Nomes sem Sepultura | Chegada ao bosque com o bilhete | Recuperar o registro do destacamento num ponto fixo alcançável | Marcas de transporte identificam cargas da Estrada dos Ossários |
-| act1_03_bone_convoy | A Carga dos Mortos | Descoberta da rota de transporte | Examinar a carroça principal e sua guia de carga | Selo da ordem aponta para o arquivo do Mosteiro Sem Voz |
-| act1_04_silent_archive | O Arquivo sem Voz | Acesso ao mosteiro | Abrir o arquivo e obter o registro ritual que dá acesso à cripta | Mostrar que o rito mantém algo contido; seguir os sinais de Halric |
-| act1_05_the_mourner | Aqueles que Ela Guardou | Entrada da cripta e primeiro contato com Halric | Alcançar a antecâmara, enfrentar Orwyn e interromper o condutor local | Halric é selado; registro da drenagem revela a passagem do Afogadouro |
-| act1_06_return_to_vigil | O Que Ainda Vive | Retorno após o confronto | Informar os sobreviventes e registrar a rota reaberta | Ato I concluído; Ato II permanece conteúdo futuro até implementação própria |
+> “Encontre-me na Cripta dos Pranteadores. Não confie em quem disser que os sinos protegem os vivos.”
 
-## Informação obrigatória e dependências
+O funeral não é do personagem jogável. Halric é o autor da carta, mas não aparece pessoalmente no prólogo ou no Ato I. A encenação do prólogo, inclusive eventual cutscene, precisa ser pulável sem perder flags ou objetivo no diário.
 
-- Pistas principais são colocadas em landmarks garantidos pelo gerador; não dependem de chance de drop.
-- Registro de transporte e acesso ritual são pistas/flags. Não exigem inventário de quest ocupando espaço até que essa política seja aprovada.
-- Cada transição deve funcionar após fechar/carregar o jogo, conforme o contrato de save que vier a ser implementado.
-- A indicação de local deve ser suficiente sem ler todos os diálogos opcionais. Recapitular objetivo no diário.
-- Destravar passagem e conceder recompensa são operações únicas por personagem/quest. Repetir conversa não repete o crédito.
-- Não definir aqui quantidades de XP, ouro, itens, níveis ou porcentagens; o contrato de gameplay fornecerá esses dados.
+## Percurso do ato
 
-## Estados propostos para cada missão
+`Vigília de Cal → Campos Calcinados → Bosque dos Enforcados → Estrada dos Ossários → Mosteiro Sem Voz → Cripta dos Pranteadores → passagem para o Afogadouro`.
 
-| Estado | Significado |
-| --- | --- |
-| unavailable | Dependência narrativa ainda não satisfeita |
-| available | Pode ser recebida por conversa ou descoberta prevista |
-| active | Objetivo em andamento |
-| objective_met | Evidência ou confronto concluído, falta encerramento quando aplicável |
-| completed | Encerrada e com recompensa única registrada |
+O hub continua acessível conforme o contrato de viagem. A campanha pode registrar a escadaria descoberta sem carregar um Ato II ainda inexistente. Em uma build limitada ao Ato I, apresentar o encerramento do recorte e permitir retorno seguro.
 
-Nem toda missão exige todas as etapas na interface. A ordem lógica não pode depender da presença de uma janela de diálogo aberta. Se o jogador alcançar um landmark antes de receber a missão, registrar a descoberta e reconciliar quando ela ficar disponível; não gerar um softlock.
+## Objetivos propostos
 
-## Cena da cripta
+IDs são documentais. Preservar IDs técnicos já distribuídos por mapeamento e migração explícita; não renomear saves automaticamente.
 
-1. Halric avisa que sua voz já foi usada para chamar os mortos. O controle do jogador não é retirado durante combate ativo.
-2. Orwyn apresenta seu abrigo e impede a retirada do mestre. A entrada do chefe sinaliza o confronto.
-3. O encontro termina com a derrota de Orwyn, não com uma solução global para os sinos.
-4. Sem inimigos ativos, Halric confirma sua morte anterior e ajuda a romper o condutor. O Penitente sela os restos do mestre.
-5. O jogador recebe a indicação do Afogadouro e retorna ao hub. O fim do recorte não força o carregamento de um Ato II inexistente.
+| ID proposto | Missão | Evidência ou objetivo garantido | Resultado narrativo |
+| --- | --- | --- | --- |
+| prologue_last_vigil | A Última Vigília | Presenciar funeral e receber a carta do mensageiro | Registrar a busca de Halric e o aviso sobre os sinos |
+| act1_01_last_oath | O Último Juramento | Reconstituir os primeiros rastros do mestre nos Campos | Orientação de seguir para o bosque, sem substituir a carta por um bilhete contraditório |
+| act1_02_names_without_graves | Nomes sem Sepultura | Examinar memórias repetidas e registros de enterro no bosque | Reconhecer o apagamento de identidades e localizar a rota dos ossários |
+| act1_03_bone_convoy | A Carga dos Mortos | Examinar transporte funerário e a guia da carroça principal | Relacionar a rota ao arquivo do mosteiro |
+| act1_04_silent_archive | O Arquivo sem Voz | Encontrar registros de acesso e seguir os vestígios de Halric | Entrar na cripta e investigar túmulos/inscrições apagados |
+| act1_05_mausoleum_door | A Porta dos Soldados | Ler o registro de “apagar provas”, enfrentar o comandante e abrir a porta do mausoléu | Descobrir a escadaria para o ossário inundado; Halric continua desaparecido |
+| act1_06_return_to_vigil | A Escada sob Ossuvar | Registrar a descoberta e atualizar os sobreviventes, sem exigir viagem impossível | Encerrar o recorte do Ato I e indicar o Afogadouro como continuação |
 
-Apresentação, duração, fases de combate, arenas, falas finais e animações exigem subtask própria. Se houver cutscene, ela será pulável; pular não pode omitir flags, itens necessários ou a informação essencial no diário.
+O encerramento pode ocorrer pelo diário e pela atualização do hub. Não bloquear o avanço ao Afogadouro com um retorno artificial se o desenho aprovado permitir seguir diretamente. Recompensa e gate exatos serão contratados pelo executor.
 
-## Arcos opcionais sem bloquear a campanha
+## Correções obrigatórias em relação à v0.2
 
-| NPC | Descoberta | Mudança narrativa no hub |
+- A missão antiga `act1_05_the_mourner` descrevia Orwyn e o selamento de Halric. Ela foi substituída no roteiro por `act1_05_mausoleum_door`.
+- **Não remapear uma missão concluída cegamente:** a conclusão antiga não prova que o jogador venceu o comandante nem viu as novas pistas. Se existirem saves reais, definir migração/replay seguro antes de alterar flags.
+- Halric não pode ser encontrado morto, ajudar a romper um condutor ou ser selado no Ato I.
+- A Pranteadora fica no Ato II. Sua mecânica de identificar vozes e interromper ritual não pertence ao confronto do comandante.
+- O comandante guarda uma passagem, não um tesouro. Loot de combate pode existir, mas não explica sua motivação nem determina se a porta abre.
+- Pistas principais não dependem de sorte; memórias passivas não exigem matar todos os mortos para avançar.
+
+## Consequências no acampamento
+
+| NPC | Registro narrativo possível no primeiro ato | Continuidade posterior |
 | --- | --- | --- |
-| Dagna | Marcas de ferramentas nas carroças | Reconhece a participação involuntária de sua oficina e passa a identificar as peças da fundição |
-| Cael | Nomes de vítimas preservados no bosque | Decide continuar tratando sobreviventes mesmo sem confiar na instituição |
-| Tobbe | Guia da carga para o mosteiro | Admite conhecer as rotas e entrega o registro que antes ocultava |
-| Corvo Mudo | Marco funerário restaurado | Acrescenta uma inscrição sobre não responder a vozes vindas das sepulturas |
+| Dagna | Posição do jogador diante de sua proposta de expedição | Pode liderar a defesa dos vivos no Ato IV |
+| Cael | Registros encontrados e confiança na investigação do mosteiro | Pode recuperar os nomes apagados |
+| Tobbe | Evidências das rotas e oportunidade de falar sobre as minas | Sua confissão do Ato III e passagem antiga dependem do arco aprovado |
+| Corvo Mudo | Desenhos do sino rachado e rosto sem olhos preservados no diário | O nome ligado aos desenhos aparece no Ato II e sua explicação pode vir no IV |
 
-Esses arcos não dão uma terceira opção secreta no final nem introduzem reputação numérica automaticamente. Se houver recompensa mecânica, ela será definida em dados por tarefa própria.
+Esta tabela não define uma escala numérica de reputação. Condições para presença, sobrevivência e apoio no final precisam de fatos explícitos de missão e aviso antes de decisões irreversíveis.
 
-## Critérios para o futuro playtest
+## Estados e critérios de validação futura
 
-- A rota dos seis objetivos é alcançável para todas as seeds homologadas.
-- Falhar, morrer, voltar ao hub ou pular apresentação não bloqueia o objetivo.
-- Halric está morto e sob vínculo; nenhum diálogo posterior o trata como mestre vivo disponível no acampamento.
-- Concluir Orwyn repetidamente não repete a recompensa de quest nem revive Halric na cronologia.
-- O diário explica onde continuar e encerra o Ato I sem prometer conteúdo já entregue no II.
-- Os objetivos são identificáveis em português e as pistas principais continuam presentes após save/load.
+Manter estados documentais `unavailable`, `available`, `active`, `objective_met` e `completed` quando úteis. Conclusões e recompensas têm identidade única e não dependem de uma janela de diálogo aberta.
+
+- Próximo objetivo continua claro após pular o prólogo, morrer, voltar ao hub ou carregar save.
+- Carta, carroça, arquivo, registro da cripta e porta são alcançáveis em toda seed homologada.
+- Descobertas antecipadas são registradas e reconciliadas sem softlock.
+- Mortos não hostis têm apresentação distinta e não geram objetivo obrigatório de extermínio.
+- Nenhuma fala revela o encontro pessoal de Halric antes do Ato III.
+- O comandante só concede a recompensa de quest uma vez; repetir encontro não desfaz a cronologia.
+- A build do Ato I encerra seu conteúdo sem fingir que Afogadouro já está implementado.
