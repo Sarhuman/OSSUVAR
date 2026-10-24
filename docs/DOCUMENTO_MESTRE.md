@@ -2,7 +2,6 @@
 
 # Documento Mestre v0.1 — OSSUVAR
 
-> **Contém spoilers da história.** Documento original de planejamento de 24/10/2026. As classificações de status e decisões posteriores são mantidas em [DECISOES.md](DECISOES.md), que prevalece em caso de divergência. As funcionalidades e tarefas descritas abaixo ainda são planejadas. O HUD foi definido como barras horizontais em F-04; a antiga D-01 ao final é um registro histórico.
 
 O texto original é preservado integralmente abaixo.
 
