@@ -1,4 +1,4 @@
-> **Contém spoilers do prólogo e do Ato I.** Versão narrativa v0.3, de 24/10/2026. Substitui a cadeia da v0.2; implementação e contratos mecânicos continuam separados.
+> **Contém spoilers do prólogo e do Ato I.** Versão narrativa v0.4, de 24/10/2026. Preserva a cadeia v0.3 e incorpora provas e alianças v0.4; implementação e contratos mecânicos continuam separados.
 
 # Prólogo e Ato I — A última vigília
 
@@ -47,9 +47,9 @@ O encerramento pode ocorrer pelo diário e pela atualização do hub. Não bloqu
 
 | NPC | Registro narrativo possível no primeiro ato | Continuidade posterior |
 | --- | --- | --- |
-| Dagna | Posição do jogador diante de sua proposta de expedição | Pode liderar a defesa dos vivos no Ato IV |
-| Cael | Registros encontrados e confiança na investigação do mosteiro | Pode recuperar os nomes apagados |
-| Tobbe | Evidências das rotas e oportunidade de falar sobre as minas | Sua confissão do Ato III e passagem antiga dependem do arco aprovado |
+| Dagna | Respeito à sua proposta e autonomia | Lidera defesa se confiar; pode partir com combatentes se ignorada ou usada |
+| Cael | Provas entregues e oportunidade de investigar | Decifra rito e nomes; recusa apagamento deliberado da verdade |
+| Tobbe | Reconhecimento dos erros da Ordem, sem exigir mentira | Abre passagem e ajuda com rito/pó; pressão para mentir rompe ajuda |
 | Corvo Mudo | Desenhos do sino rachado e rosto sem olhos preservados no diário | O nome ligado aos desenhos aparece no Ato II e sua explicação pode vir no IV |
 
 Esta tabela não define uma escala numérica de reputação. Condições para presença, sobrevivência e apoio no final precisam de fatos explícitos de missão e aviso antes de decisões irreversíveis.
@@ -65,3 +65,13 @@ Manter estados documentais `unavailable`, `available`, `active`, `objective_met`
 - Nenhuma fala revela o encontro pessoal de Halric antes do Ato III.
 - O comandante só concede a recompensa de quest uma vez; repetir encontro não desfaz a cronologia.
 - A build do Ato I encerra seu conteúdo sem fingir que Afogadouro já está implementado.
+
+## Continuidade com os quatro desfechos
+
+As primeiras pistas do massacre podem surgir neste ato sem antecipar toda a
+revelação. Preservar documentos como fatos, sem consumi-los como moeda de serviços.
+A primeira lista e a fala de Edrin pertencem ao Afogadouro. A origem de Lysa e
+do fragmento não é conhecida pelo protagonista no prólogo. Requisitos e custos
+estão em [PACTO_E_DESFECHOS.md](PACTO_E_DESFECHOS.md). Não tornar as três âncoras
+objetivo obrigatório de toda rota. Sem novas flags executáveis nesta revisão.
+

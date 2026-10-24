@@ -2,7 +2,7 @@
 
 # Documento Mestre v0.1 — OSSUVAR
 
-Registro histórico de planejamento. A direção narrativa vigente é a v0.3 fornecida pelo responsável. Cosmologia, Halric, chefes e finais do bloco histórico abaixo foram substituídos. Para a continuidade, consulte [NARRATIVA.md](NARRATIVA.md) e [MISSOES_ATO_I.md](MISSOES_ATO_I.md). Consulte também [IMPACTO_NARRATIVO_V03.md](IMPACTO_NARRATIVO_V03.md). A seção original abaixo é preservada; status atuais estão em [DECISOES.md](DECISOES.md) e [ESTADO_PROJETO.md](ESTADO_PROJETO.md). Isso não aprova automaticamente contratos mecânicos nem declara entregas de código.
+Registro histórico de planejamento. A direção narrativa vigente é a v0.4 fornecida pelo responsável. Cosmologia, Halric, chefes e finais do bloco histórico abaixo foram substituídos. Para a continuidade, consulte [NARRATIVA.md](NARRATIVA.md) e [MISSOES_ATO_I.md](MISSOES_ATO_I.md). Consulte também [IMPACTO_NARRATIVO_V04.md](IMPACTO_NARRATIVO_V04.md). A seção original abaixo é preservada; status atuais estão em [DECISOES.md](DECISOES.md) e [ESTADO_PROJETO.md](ESTADO_PROJETO.md). Isso não aprova automaticamente contratos mecânicos nem declara entregas de código.
 
 
 O texto original é preservado integralmente abaixo.
@@ -260,5 +260,6 @@ CRITÉRIOS DE ACEITE
 • D-02: Aprovar o nome OSSUVAR e a premissa da história.
 • D-03: Autorização formal para iniciar a T-001. Até lá, nenhum código é pedido ao Codex.
 ```
+
 
 

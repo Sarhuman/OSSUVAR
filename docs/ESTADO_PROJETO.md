@@ -7,7 +7,7 @@ dos PRs e não presume que outras sessões pararam de trabalhar.
 
 | Frente | Conteúdo | Efeito desta atualização |
 | --- | --- | --- |
-| main | Apresentação, decisões e narrativa v0.3 | Somente arquivos Markdown adicionados/atualizados |
+| main | Apresentação, decisões e narrativa v0.4 | Somente arquivos Markdown adicionados/atualizados |
 | PR #1 / codex/docs-historia-informacoes | Proposta documental anterior | Preservada; conciliar ou retirar mudanças superadas antes de eventual merge |
 | PR #2 / codex/T-001 | Bootstrap e testes | Nenhum arquivo, commit ou configuração alterado por esta frente |
 | PR #3 / codex/prototipo-vigilia | Arena experimental sobre codex/T-001 | Nenhum arquivo, commit ou configuração alterado por esta frente |
@@ -47,13 +47,13 @@ que não afetem sua tarefa técnica.
 | Skills | 12 nomes no planejamento; Giro Ceifador demonstrativo na arena | Árvores, ranks e efeitos completos ainda precisam de execução |
 | Mapas | Arena fixa em branch; geografia e progressão documentadas | Gerador e zonas de campanha não são entregues por documentos |
 | Loot | Item demonstrativo na arena | Raridades, afixos, conjuntos e receitas precisam de dados e testes próprios |
-| História | Direção v0.3 fornecida pelo responsável, prólogo e missões atualizados | Diálogos, escolhas, alianças e cenas ainda não implementados |
+| História | Direção v0.4 fornecida pelo responsável, prólogo e missões atualizados | Diálogos, escolhas, alianças e cenas ainda não implementados |
 | Save e build PC | Instruções no pacote de prompts | Nenhum artefato entregue por esta revisão |
 
 ## Fronteira entre narrativa e gameplay
 
 A geografia foi preservada, mas origem do pacto, Halric, chefes e desfechos seguem
-agora a direção v0.3. Consulte [IMPACTO_NARRATIVO_V03.md](IMPACTO_NARRATIVO_V03.md)
+agora a direção v0.4. Consulte [IMPACTO_NARRATIVO_V04.md](IMPACTO_NARRATIVO_V04.md)
 antes de implementar conteúdo ou revisar o PR #4.
 Isso não decide quantidade de inimigos, níveis, dano, tamanho de mapa, preços,
 cooldowns ou duração de cenas. O executor deve consumir contratos aprovados,
@@ -63,11 +63,15 @@ Revisão editorial não é atestado de CI. Verificação de Markdown não substi
 playtest; executar testes do jogo sem mudança de código tampouco provaria a
 qualidade narrativa. Esta frente valida coerência, links e conteúdo documental.
 
-## Coordenação da revisão v0.3
+## Coordenação da revisão v0.4
 
 Esta atualização não altera a branch de Health nem amplia sua tarefa para narrativa.
 Halric não deve ser selado na cripta e Orwyn não é mais o chefe do Ato I.
 Os rascunhos e prompts antigos são históricos nos trechos conflitantes; a direção
 mais recente do responsável em NARRATIVA prevalece. Não fazer merge cego de
 documentação antiga que reintroduza o deus, Irrik final ou Halric morto.
+
+
+A v0.4 define Odran, Maera, Edrin, Lysa e quatro desfechos. A fundição experimental
+antecede o nascimento do protagonista. Perder nome/voz não apaga IDs ou saves.
 

@@ -1,3 +1,5 @@
+> **Registro histórico da migração v0.3.** A narrativa vigente é v0.4. Consulte [IMPACTO_NARRATIVO_V04.md](IMPACTO_NARRATIVO_V04.md) e [PACTO_E_DESFECHOS.md](PACTO_E_DESFECHOS.md); requisitos e desfechos abaixo foram complementados ou substituídos.
+
 # Migração documental para a narrativa v0.3
 
 Data: 24/10/2026. Origem: história expandida fornecida pelo responsável, **O Décimo Quarto Sino**. Esta instrução tem precedência sobre as propostas narrativas anteriores.
@@ -40,3 +42,4 @@ As interfaces de Health, migração por adapters, perfil legado e RNG do contrat
 - Não executar o antigo objetivo de selar Halric nem adicionar dois chefes principais ao Ato I para tentar cumprir ambas as versões.
 - Quantidades, balanceamento e catálogos continuam propostas ou pendências, conforme decisão específica.
 - Usar histórico Git para consulta da v0.2; não manter dois roteiros concorrentes marcados como vigentes.
+

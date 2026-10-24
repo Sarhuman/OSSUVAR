@@ -16,13 +16,14 @@ equivale a estar implementado ou homologado.
 | F-06 | Preparar prompts para o Codex e trabalhar na documentação/história enquanto a execução de código ocorre em outra frente |
 | F-07 | Atualizar a main documental e preencher as lacunas narrativas, conforme pedido de 24/10/2026; isso não autoriza merge dos PRs de código |
 | F-08 | Incorporar a história expandida O Décimo Quarto Sino à main: pacto da guerra civil, vozes aprisionadas, Halric vivo, novos chefes e possibilidades finais. A direção do responsável substitui as propostas narrativas conflitantes da v0.2 |
+| F-09 | Incorporar Odran, Maera, Edrin, Lysa, preço do Guardião, requisitos dos quatro finais e consequências das alianças fornecidos pelo responsável |
 
 ## Propostas preservadas do planejamento original
 
 | ID | Conteúdo | Estado |
 | --- | --- | --- |
 | P-01 | Nome OSSUVAR e subtítulo Os Treze Sinos | Uso de trabalho; verificação de marca e homologação formal pendentes |
-| P-02 | Premissa e quatro atos | Direção v0.3 fornecida pelo responsável; parâmetros e execução continuam por contratos próprios |
+| P-02 | Premissa e quatro atos | Direção v0.4 fornecida pelo responsável; parâmetros e execução continuam por contratos próprios |
 | P-03 | Godot 4.7.2, Compatibility e GDScript tipado | Base usada nos PRs experimentais; não é evidência de homologação no Editor |
 | P-04 | Isometria 2:1, tiles 64×32 e oito direções | Diretriz do documento mestre e do protótipo |
 | P-05 | Penitente com 12 skills em Ferro/Cal/Cinza | Catálogo planejado; parâmetros e implementação completos pendentes |
@@ -32,19 +33,24 @@ equivale a estar implementado ou homologado.
 | P-09 | Marcos M0–M5 e backlog T-001–T-012 | Histórico de planejamento, não medidor automático de conclusão |
 | P-10 | PR pequeno por tarefa, draft, relatório e sem merge automático | Fluxo para código; atualização documental em main foi pedida separadamente |
 
-## Direção narrativa vigente — v0.3
+## Direção narrativa vigente — v0.4
 
 | ID | Tema | Resolução vigente |
 | --- | --- | --- |
 | N-01 | Geografia do Ato I | Um hub, Campos, Bosque, Estrada dos Ossários, Mosteiro e Cripta; sequência preservada |
 | N-02 | Halric | Vivo, marcado pelo sino e corresponsável pela fundição; aparece pessoalmente no Ato III |
-| N-03 | Origem do pacto | Reis da guerra civil aprisionaram vozes; a Ordem vigia âncoras e oculta a história |
+| N-03 | Origem do pacto | Odran Vhal executou soldados que denunciariam fome/impostos, massacre e usurpação; Maera criou o pacto |
 | N-04 | Motor da crise | Décimo Quarto criado para quebrar o mecanismo; ossos dos primeiros reis na fundição; arco de Irrik/Edda não é o motor vigente |
 | N-05 | Chefes e confronto final | Comandante no I; Pranteadora no II; antigo Penitente no III; encontro com Halric no IV, sem combate obrigatório presumido |
-| N-06 | Desfechos | Destruir, tocar ou reforjar; revelação pública como resultado político articulável à escolha ritual |
+| N-06 | Desfechos | O Silêncio, A Testemunha, O Guardião e Os Nomes dos Vivos; requisitos em PACTO_E_DESFECHOS.md |
 | N-07 | Continuidade | Recompensas únicas e rejogo não desfazem fatos da campanha |
 | N-08 | Protagonista e aliados | Não é o último Penitente vivo de toda a Ordem; alianças da Vigília têm consequências explícitas |
 | N-09 | Abertura | Funeral, três batidas, silêncio dos Treze, mensageiro e carta; mortos inicialmente podem repetir memórias sem atacar |
+| N-10 | Guardião | Maera divide o registro em treze; Guardião perde nome/voz/memória; três âncoras físicas não são três guardiões |
+| N-11 | Corvo e rosto | Edrin é a criança testemunha preservada; rosto é Maera; lista/nome devolvidos permitem pronunciar Odran |
+| N-12 | Filho da sepultura | Lysa morre sem saber do retorno; Halric usa fragmento do núcleo experimental e cria vínculo circunstancial |
+| N-13 | Cronologia | Núcleo experimental anterior ao nascimento, conclusão posterior e toque pleno são momentos distintos |
+| N-14 | Alianças | Dagna, Cael, Tobbe e Edrin respondem a fatos; provas não são substituídas por afinidade abstrata |
 
 Esta direção veio do responsável e não aguarda aprovação para substituir o
 roteiro antigo. Revisão de coerência, detalhes não definidos e contratos de
@@ -57,7 +63,7 @@ implementação permanecem tarefas separadas; nenhuma homologação de gameplay
 | --- | --- | --- |
 | D-02 | Nome definitivo e marca | Mantida; esta documentação não faz verificação de marca |
 | D-03 | Início da T-001 | A condição antiga de nenhum código ainda existir está desatualizada: há bootstrap no PR #2; homologação e integração continuam separadas |
-| D-04 | Desfecho | Direção ampliada em N-06; definir requisitos de descobertas/alianças e estado final antes de implementar |
+| D-04 | Desfecho | Quatro resultados/requisitos definidos; falta matriz técnica de rotas, avisos, consequências e persistência |
 | D-05 | Chefes | Elenco realocado em N-05; nomes do comandante e antigo Penitente e contratos de combate ainda pendentes |
 | D-06 | Licença | Não foi escolhida por esta atualização |
 | D-07 | Política de spoilers públicos | Documentos editoriais aqui têm aviso e README sem revelações; política definitiva continua pendente |
@@ -65,12 +71,12 @@ implementação permanecem tarefas separadas; nenhuma homologação de gameplay
 | D-09 | Contratos de gameplay | Proposta no PR #4; conciliar referências narrativas v0.2 sem mudar interfaces técnicas ou aprovar números automaticamente |
 | D-10 | Morte e retorno em gameplay | Não confundir reload ou respawn com imortalidade canônica |
 | D-11 | Endgame depois do final | Narrativa admite estado anterior ao confronto; persistência/interface precisam de contrato técnico |
-| D-12 | Continuidade v0.3 | Definir o rosto do Corvo, nomes selados e sentido de filho da sepultura; revisar coerência sem bloquear Health |
+| D-12 | Continuidade v0.4 | Corvo, rosto, nascimento e preço definidos; completar datas exatas, nomes de chefes e cenas, sem bloquear Health |
 
 ## Precedência e histórico
 
 Instrução explícita mais recente do responsável prevalece. O Documento Mestre
-v0.1 é preservado como histórico. A narrativa v0.3 substitui as propostas conflitantes e preserva o texto histórico sem
+v0.1 é preservado como histórico. A narrativa v0.4 substitui as propostas conflitantes e preserva o texto histórico sem
 reescrever fórmulas; valores provisórios da arena não se tornam balanceamento
 final por aparecerem numa branch.
 
@@ -81,4 +87,5 @@ final por aparecerem numa branch.
 | 24/10/2026 | Responsável pediu prompts ao executor; documentação/história passam a ser frente separada |
 | 24/10/2026 | Atualização da main documental e narrativa editorial v0.2, com resoluções N-01 a N-07 |
 | 24/10/2026 | História expandida fornecida pelo responsável incorporada como v0.3; v0.2 substituída e impactos de contratos registrados |
+| 24/10/2026 | Odran/Maera/Edrin/Lysa, preço do Guardião e quatro finais incorporados à v0.4; cronologia experimental do fragmento explicitada |
 

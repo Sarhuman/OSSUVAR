@@ -14,7 +14,7 @@ não significam integração ou homologação no Editor.
 
 | Frente | Estado e localização |
 | --- | --- |
-| Página principal e narrativa | Documentação nesta branch; direção narrativa v0.3 fornecida pelo responsável; cenas e gameplay ainda não implementados |
+| Página principal e narrativa | Documentação nesta branch; direção narrativa v0.4 fornecida pelo responsável; cenas e gameplay ainda não implementados |
 | Proposta documental original | [PR #1](https://github.com/Sarhuman/OSSUVAR/pull/1); conciliar com a documentação atual antes de integrar |
 | Bootstrap Godot, GUT e CI | [PR #2](https://github.com/Sarhuman/OSSUVAR/pull/2), em revisão |
 | Arena experimental | [PR #3](https://github.com/Sarhuman/OSSUVAR/pull/3), baseado na branch do PR #2 |
@@ -75,7 +75,7 @@ documentos com aviso de spoilers.
 - **Um hub + quatro áreas hostis + uma masmorra + um chefe principal** no Ato I.
 - Áreas: Campos Calcinados, Bosque dos Enforcados, **Estrada dos Ossários** e
   Mosteiro Sem Voz; masmorra: Cripta dos Pranteadores. A estrada completa a
-  contagem preservada na direção narrativa v0.3 fornecida pelo responsável.
+  contagem preservada na direção narrativa v0.4 fornecida pelo responsável.
 - Força, Destreza, Vitalidade e Energia; Vida, Mana, Vigor e XP com **barras horizontais**.
 - Itens, inventário em grade, equipamento, afixos, Selos e Palavras de Sino.
 - Geração por seed, Marcos de Cal, Fresta, progressão e save versionado.
@@ -112,9 +112,10 @@ de combate. Nenhum executável é distribuído por esta atualização documental
 - [Estado das branches e integração](docs/ESTADO_PROJETO.md).
 - [Registro de decisões](docs/DECISOES.md).
 - [Documento Mestre v0.1](docs/DOCUMENTO_MESTRE.md) — histórico de design, arquitetura e backlog; **contém spoilers**.
-- [História expandida v0.3](docs/NARRATIVA.md) — regras do mundo, personagens, atos e finais; **contém spoilers completos**.
+- [História expandida v0.4](docs/NARRATIVA.md) — regras do mundo, personagens, atos e finais; **contém spoilers completos**.
 - [Prólogo e missões do Ato I](docs/MISSOES_ATO_I.md) — objetivos, pistas e critérios narrativos; **contém spoilers**.
-- [Impacto da narrativa v0.3](docs/IMPACTO_NARRATIVO_V03.md) — diferenças em relação aos contratos e prompts anteriores.
+- [Pacto e quatro desfechos](docs/PACTO_E_DESFECHOS.md) — provas, personagens, alianças e finais; **contém spoilers completos**.
+- [Impacto da narrativa v0.4](docs/IMPACTO_NARRATIVO_V04.md) — conciliação de contratos e missões.
 
 ## Gestão e próximos passos
 
@@ -132,4 +133,5 @@ Não usar o merge de documentação como autorização implícita para mesclar c
 Licença a definir pelo responsável; não há concessão de licença aberta nesta
 página. O fluxo de contribuições externas ainda não está definido. OSSUVAR é
 um projeto independente, sem vínculo com Diablo II ou Project Diablo 2.
+
 
