@@ -51,4 +51,4 @@ Este arquivo diz o que está **fechado**, o que é **proposta do Tech Lead** (vi
 | Data | Alteração |
 | --- | --- |
 | 24/10/2026 | Criação do registro, com as decisões do Documento Mestre v0.1 classificadas por status. |
-| 24/10/2026 | D-01 consolidada como F-04: barras horizontais; removida a pendência duplicada. |
+| 24/10/2026 | D-01 fechada como F-04: HUD com barras horizontais. |
