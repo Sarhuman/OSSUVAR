@@ -50,7 +50,7 @@ No acampamento Vigília de Cal você encontra a ferreira Dagna, a curandeira Irm
 
 - Uma classe jogável, o **Penitente**, com 12 skills em três árvores: Ferro (ataque), Cal (defesa e auras) e Cinza (fogo e maldições).
 - Ato I completo: acampamento, quatro áreas, uma masmorra e um chefe.
-- Recursos Vida, Mana e Vigor; atributos Força, Destreza, Vitalidade e Energia.
+- Recursos Vida, Mana e Vigor exibidos em barras horizontais no HUD; atributos Força, Destreza, Vitalidade e Energia.
 - Loot completo: raridades, afixos, sockets e inventário em grade.
 - Mapas procedurais por semente, com salas especiais fixas.
 - Ciclos de dificuldade previstos na arquitetura; entrega prevista para o M5.
