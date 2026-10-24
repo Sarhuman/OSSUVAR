@@ -16,7 +16,7 @@ jobs:
       - name: Install gdtoolkit
         run: python -m pip install gdtoolkit==4.3.4
       - name: Lint project scripts
-        run: gdlint core tests
+        run: gdlint core combat data ui world tests
       - name: Install Godot 4.7.2
         run: |
           curl --fail --location --retry 3 --output /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
