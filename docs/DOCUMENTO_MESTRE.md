@@ -255,7 +255,7 @@ CRITÉRIOS DE ACEITE
 - Teste de fumaça passa em modo headless.
 - Nenhum arquivo fora das pastas descritas, exceto raiz do repositório e addons/gut.
 9. Decisões abertas para o PO
-• D-01: HUD com orbes clássicas de Vida e Mana ou barras horizontais? Padrão: orbes, trocável depois por ficar isolado em ui/hud.
+- **D-01 (fechada em 24/10/2026)**: o HUD usa barras horizontais de Vida, Mana e Vigor, mais a barra de XP. O HUD fica isolado em ui/hud.
 • D-02: Aprovar o nome OSSUVAR e a premissa da história.
 • D-03: Autorização formal para iniciar a T-001. Até lá, nenhum código é pedido ao Codex.
 ```
