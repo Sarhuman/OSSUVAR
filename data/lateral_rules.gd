@@ -22,6 +22,12 @@ extends Resource
 @export var active: float = 0.10
 @export var player_recovery: float = 0.24
 @export var enemy_recovery: float = 0.60
+@export var boss_health: float = 128.0
+@export var boss_damage: int = 18
+@export var boss_prepare: float = 0.75
+@export var boss_recovery: float = 0.80
+@export var boss_reach: float = 76.0
+@export var boss_body_size: Vector2 = Vector2(48, 88)
 @export var seed_value: int = 1314
 
 

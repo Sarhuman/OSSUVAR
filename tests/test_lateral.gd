@@ -51,6 +51,7 @@ func test_death_cancels_attack_and_is_emitted_once() -> void:
 func test_scene_death_blocks_input_and_restart_is_independent() -> void:
 	var stage: LateralStage = SCENE.instantiate() as LateralStage
 	add_child_autofree(stage)
+	stage.begin()
 	await wait_physics_frames(20)
 	var old: LateralSession = stage.session
 	var old_actor: LateralActor = stage.player
@@ -84,6 +85,7 @@ func test_scene_death_blocks_input_and_restart_is_independent() -> void:
 func test_ground_jump_air_attack_and_landing() -> void:
 	var stage: LateralStage = SCENE.instantiate() as LateralStage
 	add_child_autofree(stage)
+	stage.begin()
 	await wait_physics_frames(20)
 	assert_true(stage.player.is_on_floor())
 	assert_true(stage.player.request_jump())

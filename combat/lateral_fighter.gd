@@ -40,12 +40,20 @@ func begin_attack() -> bool:
 	return true
 
 
-func advance(delta: float) -> void:
-	if age < 0.0:
-		return
-	age += delta
+func advance(delta: float, target: LateralFighter = null) -> HealthComponent.Result:
+	if age < 0.0 or not is_finite(delta) or delta < 0.0:
+		return null
+	var next_age: float = age + delta
+	var result: HealthComponent.Result = null
+	# Resolver a interseção temporal antes de descartar a execução/ledger.
+	# O adapter fornece somente um alvo cuja geometria está livre neste passo.
+	if target != null and age < prepare + active and next_age >= prepare:
+		age = maxf(age, prepare)
+		result = try_hit(target)
+	age = next_age
 	if age >= prepare + active + recovery:
 		cancel()
+	return result
 
 
 func cancel() -> void:

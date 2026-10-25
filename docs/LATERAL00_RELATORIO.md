@@ -1,219 +1,221 @@
-# LATERAL-00 — prova lateral isolada
+# OSSUVAR — MVP lateral jogável
 
-Entrega de 25/10/2026, para revisão em PR draft. Implementação provisória;
-não representa migração completa, balanceamento aprovado ou homologação humana.
+Atualizado em 25/10/2026. O responsável ampliou explicitamente LATERAL-00 para
+**MVP lateral completo: início, percurso, combate, chefe e final, com arte provisória**.
+Esta entrega fecha esse ciclo curto; a campanha dos quatro atos/quatro finais
+continua fora deste MVP. Resumo de transferência solicitado será entregue no chat.
 
-## Base e isolamento
+## Base, branch e preservação
 
-- Branch: `codex/LATERAL-00-prototipo`.
-- Base local/remota conferida duas vezes: `codex/P-02D-rng-streams`,
-  `d7b867fcb13a7ad2c8b45a2d1563706aff9aa016`. Não avançou.
-- Worktree Git separada: `C:/Users/Sarumano/Music/OSSUVAR-LATERAL00`.
-- Main consultada: `e4fa19767d145e3023d161797a8eff6c8246470b`.
-  Lidos README, decisões, estado, narrativa v0.4 e conciliação v0.4.1/pacto.
-  Nenhum AGENTS.md encontrado no repositório/ancestrais consultados.
+- PR #9, mantido draft, sem merge; branch `codex/LATERAL-00-prototipo`.
+- Base confirmada: `d7b867fcb13a7ad2c8b45a2d1563706aff9aa016`,
+  `codex/P-02D-rng-streams`. Não avançou.
+- Primeira entrega do PR: `6a4054ab9091259dc13e6096ad3bba5f74bc68e1`.
+  A continuação acrescenta o MVP e corrige os três pontos da revisão.
+- Main consultada, ainda atual na conferência final:
+  `e4fa19767d145e3023d161797a8eff6c8246470b`.
+- Worktree isolada: `C:/Users/Sarumano/Music/OSSUVAR-LATERAL00`.
 - Checkout original preservado em `codex/docs-historia-informacoes`,
   `7f65da6937a2096c958bcee82c19e1ef3057a12f`, com `.godot/` preexistente.
-  Não houve reset, rebase ou merge. Outros worktrees foram preservados.
-- A instrução explícita LATERAL-00 substitui a perspectiva somente nesta prova.
-  Documentação antiga, narrativa e cena inicial da arena não foram reescritas.
-  Odran, Maera, Edrin, Lysa e os quatro finais permanecem como na main;
-  esta cena não implementa campanha ou outro roteiro.
+- Nenhum reset, rebase ou merge. Nenhum AGENTS.md encontrado nos caminhos
+  consultados. README/decisões/estado/narrativa/pacto da main foram consultados
+  sem copiá-los sobre a árvore de código.
+- Preservados Odran, Maera, Edrin, Lysa e os quatro finais. A sentinela deste
+  percurso é um chefe técnico provisório, não um personagem canônico novo.
+  O encerramento é o do MVP, não um quinto desfecho da campanha.
 
-## Executar e validar no Editor
+## Jogar
 
-Cena própria: `res://world/lateral/lateral.tscn`. Comando exato:
+Godot **4.7.2 Standard**, Compatibility, GDScript tipado, exclusivamente 2D.
+Cena própria: `res://world/lateral/lateral.tscn`.
 
 ```powershell
 & 'C:\Users\Sarumano\Music\godot-4.7.2\Godot_v4.7.2-stable_win64_console.exe' --path 'C:\Users\Sarumano\Music\OSSUVAR-LATERAL00' res://world/lateral/lateral.tscn
 ```
 
-No Editor, abrir esse worktree, selecionar a cena lateral e usar F6.
-**F5 continua abrindo a cena inicial isométrica preservada.**
+No Editor: abrir o worktree, selecionar a cena lateral e usar F6. F5 continua
+abrindo a cena inicial isométrica preservada. Há também um lançador local externo
+`C:/Users/Sarumano/Music/OSSUVAR-LATERAL00-EVIDENCIAS/JOGAR_OSSUVAR_MVP.cmd`;
+ele apenas executa o Godot instalado, não é exportação Windows.
 
-1. A/D ou setas: andar; Espaço: pular. Soltar o direcional no ar interrompe
-   o deslocamento horizontal. Sem pulo duplo, coyote time ou salto variável.
-2. Saltar sobre a primeira plataforma; andar por sua parte inferior para
-   conferir colisão unidirecional. Cair e aterrissar devem manter apoio nos pés.
-3. J no chão: preparação, acerto e recuperação. O movimento fica comprometido
-   durante o ataque. O esqueleto anuncia a preparação com marcador âmbar.
-4. Enfrentar o esqueleto, testar morte do jogador e tentar andar/pular/atacar
-   morto. R cria outra sessão; não cura ou ressuscita o Health anterior.
-5. Colidir com o bloco, saltá-lo e atravessar a plataforma sobre o vão.
-   Queda abaixo da área mata; R recomeça. Não há respawn automático.
-6. Alcançar a porta sinalizada. A câmera acompanha horizontalmente e limita
-   a área; a saída apresenta conclusão e permite R. Não exige matar o inimigo.
+1. Clicar **Iniciar** ou Enter. O menu inicial bloqueia as ações do personagem.
+2. A/D/setas: andar; Espaço: pular; J: atacar no chão; R: voltar ao início com
+   estado novo. A direção do ataque é a direção em que o personagem está olhando.
+3. Percorrer plataformas, superar o bloco e atravessar o apoio sobre o vão.
+4. Enfrentar o esqueleto e a sentinela maior, com preparação anunciada em âmbar.
+5. Derrotar a sentinela e alcançar a porta. A saída muda de fechada para aberta;
+   há tela de conclusão e botão/Enter para jogar novamente.
+6. Morrer mostra a tela de derrota. Jogar novamente cria outra sessão; não cura
+   nem ressuscita o componente morto anterior. Quedas fora da área também matam.
 
-## Reaproveitamento e arquivos
+## Arquivos e reaproveitamento
 
-| Arquivo novo | Responsabilidade |
+| Arquivo | Responsabilidade |
 | --- | --- |
-| `data/lateral_rules.gd` | Resource com parâmetros provisórios e adapter mínimo para ArenaRules exigido pelo Stats existente |
-| `combat/lateral_fighter.gd` | Fases de ataque e ledger por execução; chama Health.damage usando snapshot de Stats |
-| `core/lateral_session.gd` | Instâncias independentes de Health/Stats e contexto criado pelo autoload Rng existente |
-| `world/lateral/lateral_actor.gd` | CharacterBody2D, controles, gravidade, colisões, IA curta, alcance e desenho próprio |
-| `world/lateral/lateral_stage.gd` | Percurso, plataformas, câmera, HUD horizontal, saída e substituição da sessão no reinício |
-| `world/lateral/lateral.tscn` | Entrada independente da prova |
-| `tests/test_lateral.gd` | Seis testes focados de combate, morte, salto/aterrissagem e reinício |
-| `tests/lateral_playthrough.gd` | Percurso com input sintético/física real e capturas externas opcionais |
-| `docs/LATERAL00_RELATORIO.md` | Este relatório |
+| `data/lateral_rules.gd` | Parâmetros provisórios e adapter ArenaRules para o Stats existente |
+| `combat/lateral_fighter.gd` | Health/Stats, fases, resolução temporal do ataque e ledger por execução |
+| `core/lateral_session.gd` | Jogador/esqueleto/chefe independentes e contexto RNG próprio |
+| `world/lateral/lateral_actor.gd` | CharacterBody2D, gravidade, pulo, controles, IA, obstrução e desenho próprio |
+| `world/lateral/lateral_stage.gd` | Percurso, menu, HUD horizontal, câmera, chefe, derrota, saída e encerramento |
+| `world/lateral/lateral.tscn` | Cena de entrada independente |
+| `tests/test_lateral.gd` | Seis testes originais da prova; os testes físicos entram agora pelo menu/início |
+| `tests/test_lateral_mvp.gd` | Cinco regressões novas para revisão e ciclo do MVP |
+| `tests/lateral_playthrough.gd` | Roteiro gráfico reproduzível, física real e input sintético |
+| `docs/LATERAL00_RELATORIO.md` | Este relatório atualizado |
 
-Incluídos também os `.gd.uid` correspondentes. Não se alteraram HealthComponent,
-StatsComponent, RngService/RngContext, ArenaRun, recursos da arena, InputMap,
-project.godot, fixtures, checkpoints, testes anteriores ou addons. Metadados
-`.import` regenerados localmente foram restaurados; não fazem parte do diff.
+Incluídos os UIDs correspondentes. HealthComponent, StatsComponent, RngService,
+RngContext, ArenaRun, project.godot, main.tscn, addons e testes/fixtures legados
+permanecem idênticos à base. Não foi copiado ArenaRun. Metadados `.import`
+gerados localmente são restaurados antes do commit.
 
-Health é a única autoridade de vida/morte de cada combatente. Stats é a única
-autoridade de dano derivado. Seu construtor exige ArenaRules: o adapter fornece
-somente dano básico e bônus de Giro zero, sem criar Stats alternativo nem copiar
-ArenaRun. O contexto RNG pertence à sessão e não é retido globalmente; não há
-sorteios na cena, pois mapa, comportamento e dano desta prova não os exigem.
+Health continua sendo a única autoridade de vida/morte; dano vem de
+`StatsComponent.snapshot().basic_damage`. Cada combatente tem seus componentes;
+nenhum HP paralelo no ator/HUD. Stats exige ArenaRules, portanto o adapter
+fornece dano básico e bônus de Giro zero. Não há implementação alternativa
+nem mudança da interface dos componentes reaproveitados.
 
-O ledger fica no ataque, não em Health: identifica alvos por instance_id,
-rejeita impactos repetidos e é limpo ao encerrar/cancelar a execução. Não mantém
-referências fortes aos alvos nem histórico crescente entre ataques. Alvos fora
-de alcance/altura/direção não chegam a Health. A morte cancela o ataque atual;
-ações e controle horizontal são bloqueados. Gravidade/queda continuam físicas.
-R substitui sessão, atores, Health, Stats e contexto; referências antigas nos
-testes continuam mortas/inalteradas. Sem método de ressurreição.
+Cada sessão recebe contexto do autoload Rng existente, sem registro crescente
+ou reset global. A cena não precisa de sorteios; não foram introduzidos. R e
+jogar novamente substituem sessão/atores/Health/Stats/contexto. Referências antigas
+retidas nos testes preservam seus estados, incluindo morte e RNG state.
 
-## Parâmetros provisórios
+## Três pontos da revisão — corrigidos e testados
 
-Centralizados em LateralRules, sem reutilizar alcance/dimensões isométricas:
+**Oponente removido:** o adapter verifica `is_instance_valid`, presença na árvore
+ e exclusão enfileirada antes de consultar o oponente. A cena filtra referências
+válidas antes de formar arrays tipados; o teste inclui remoção, free e mais frames
+com a referência antiga. Sem acesso a nó liberado.
 
-| Parâmetro | Valor de inspeção |
+**Obstrução:** antes de oferecer o alvo ao ataque, verifica direção, alcance,
+altura e um raycast entre os pontos de ataque, na camada de colisão do mundo.
+Paredes/bloco impedem a chamada a `try_hit`. Os atores usam camada distinta e não
+obstruem esse raycast. Testado nos dois sentidos com o bloco entre os atores e
+alcance artificialmente suficiente: não há dano nem entrada no ledger; remover
+geometricamente a obstrução durante a janela permite um único acerto.
+
+**Janela ACTIVE:** `advance(delta, target)` detecta se o intervalo temporal do
+passo atravessa ACTIVE, resolve `try_hit` antes de encerrar/limpar a execução e
+então atualiza a fase. Não depende de o instante final cair em ACTIVE. O alvo é
+selecionado pela geometria do passo; não há oportunidade guardada para acertar
+muito depois de uma parede desaparecer. Passos 1/60, 0,1, 0,3, 0,5 e 1 segundo
+produzem exatamente um dano; morte e janela bloqueada não geram acerto tardio.
+Isso não é varredura contínua de hitbox ou física garantida para delta de 1 s:
+a cobertura grande é do relógio do ataque, com geometria amostrada no passo.
+
+O ledger continua fora de Health, limitado à execução e identificado por
+instance_id. É descartado ao encerrar/cancelar; não duplica histórico global.
+Preparação/recuperação, morte, novo ataque e dois alvos continuam cobertos.
+
+## Parâmetros provisórios e limites
+
+Centralizados em LateralRules; todos são valores do MVP, não balanceamento da campanha.
+
+| Parâmetro | Jogador / esqueleto / chefe |
 | --- | --- |
-| Velocidade jogador / inimigo | 230 / 95 px/s |
-| Gravidade / impulso de salto | 1400 px/s² / -560 px/s |
-| Cápsula física | 22×48 px; origem nos pés |
-| Vida jogador / inimigo | 100 / 48 |
-| Dano básico jogador / inimigo | 16 / 12, consultados por Stats |
-| Alcance jogador / inimigo; tolerância vertical | 58 / 46 px; 34 px |
-| Preparação jogador / inimigo | 0,16 / 0,55 s |
+| Vida | 100 / 48 / 128 |
+| Dano | 16 / 12 / 18 |
+| Alcance | 58 / 46 / 76 px |
+| Preparação | 0,16 / 0,55 / 0,75 s |
+| Recuperação | 0,24 / 0,60 / 0,80 s |
 | Janela ativa | 0,10 s |
-| Recuperação jogador / inimigo | 0,24 / 0,60 s |
-| Aproximação; patrulha inicial | 320 px; X=450–590 |
-| Limite de queda; seed do contexto | Y>810; 1314 |
+| Cápsula | 22×48 px / 22×48 px / 48×88 px |
 
-Esses números tornam o teste curto e legível: três acertos derrotam o inimigo;
-o anúncio mais longo permite observar a resposta. O salto tem altura balística
-nominal de 112 px e duração ao mesmo nível de 0,8 s, cobrindo aproximadamente
-184 px em velocidade máxima. Foram construídas plataformas compatíveis com
-isso, sem transportar geometria isométrica. Não são contratos de campanha.
+Velocidade jogador 230 px/s, inimigos 95 px/s; gravidade 1400 px/s²,
+impulso -560 px/s, tolerância vertical de acerto 34 px, aproximação 320 px,
+patrulha inicial X=450–590, queda letal Y>810. Salto nominal de 112 px de altura,
+0,8 s ao mesmo nível e alcance de cerca de 184 px. Seed de contexto 1314.
+Três acertos derrotam o esqueleto, oito derrotam o chefe. Os valores maiores
+ e a preparação mais lenta tornam o chefe distinguível para avaliar o ciclo.
 
-Geometria explícita em lateral_stage.gd: área 2400×720, chão em Y=620,
-bloco de 70×60 e plataformas unidirecionais. Vão X=900–1170 com apoio
-X=940–1090/Y=545; mais plataformas para inspeção. Sem navegação de plataformas
-para a IA, invulnerabilidade, combos, inventário ou sistema de recompensas.
+Área 2400×720, chão em Y=620, bloco de 70×60 e plataformas unidirecionais;
+a câmera acompanha horizontalmente e respeita os limites. Menu, derrota,
+conclusão, HUD e barras são separados do estado dos combatentes.
 
-## FreeKnight e arte provisória
+Colisão dos atores com o mundo; os combatentes podem se sobrepor entre si.
+Sem knockback, navegação de plataformas da IA, pulo duplo, coyote time, salto
+variável, transformação, escalada, árvore de habilidades, inventário novo,
+loot, campanha completa, geração procedural, save, áudio ou exportação.
+Esses limites são visíveis e não se apresentam como equivalência ao acabamento
+ou ao movimento completo de Monster Boy and the Cursed Kingdom.
 
-Inspecionado `C:/Users/Sarumano/Downloads/FreeKnight_v1.zip`, sem modificá-lo.
-Não contém arquivo de licença/readme; há folhas PNG e GIFs de duas cores,
-com/sem outline. Nenhum arquivo do ZIP foi colocado na árvore de código.
+## Arte e licença
 
-Inspeção de Colour1/Outline, células fixas 120×80:
+Arte vetorial própria e provisória, sem traçar ou copiar personagens/cenários
+de referência. FreeKnight e Lords of Pain não são dependências da cena.
+Nenhuma chamada Meshy, compra, geração de imagem ou instalação de ferramenta.
 
-| Animação disponível | Folha | Frames |
-| --- | --- | --- |
-| Idle / Run | 1200×80 cada | 10 / 10 |
-| Jump / Fall | 360×80 cada | 3 / 3 |
-| AttackNoMovement | 480×80 | 4 |
-| DeathNoMovement | 1200×80 | 10 |
+`C:/Users/Sarumano/Downloads/FreeKnight_v1.zip` foi inspecionado e preservado:
+folhas 120×80 por célula, Idle/Run 10 frames cada, Jump/Fall 3 cada,
+AttackNoMovement 4 e DeathNoMovement 10. Idle relevante ocupa 21×38 px;
+pivô de apoio estimado perto de (55,80), deslocado do centro do canvas.
+O ataque alcança X=105. Não seriam corretos recortes/recentragens por frame.
 
-Idle ocupa X=44–64/Y=42–79 com alfa ≥128: 21×38 px, não 120×80.
-O apoio visual fica aproximadamente em (55,80), deslocado do centro do canvas.
-Run muda poses dentro do canvas; o ataque estende-se até X=105. Uma eventual
-adaptação precisaria manter célula/origem fixa e validar flip nesse apoio,
-sem recentralizar frames. O pivô é estimativa de inspeção, não metadado autoral.
+O ZIP não inclui licença. A [página oficial](https://aamatniekss.itch.io/fantasy-knight-free-pixelart-animated-character)
+foi lida em 25/10/2026: a condição relativa a “AI creations” não foi esclarecida
+para este uso. Nenhum asset do pacote foi usado/publicado, nem fontes ou
+executáveis de ZIP. Uma eventual autorização do autor seria revisão separada.
 
-Na [página oficial](https://aamatniekss.itch.io/fantasy-knight-free-pixelart-animated-character),
-consultada em 25/10/2026, há permissões para projetos e restrição a “AI creations”.
-Há também resposta autorizando repositório de projeto com crédito/link, mas
-isso não esclarece a condição de IA para este trabalho. Não se presumiu licença
-suficiente para uso aqui. FreeKnight não é usado nem mesmo como dependência
-local da cena; permissão explícita do autor seria necessária para reavaliar.
+## Validação real
 
-Jogador, esqueleto e ambiente são desenhos vetoriais provisórios próprios.
-Não foram traçados ou derivados do FreeKnight/Monster Boy. O Lords of Pain
-isométrico não foi usado. Monster Boy orienta a intenção de movimento/legibilidade,
-não uma alegação de acabamento equivalente. Sem imagens geradas, compras,
-Meshy, fontes/executáveis de ZIP ou dependência de pacotes externos.
-
-## Comandos e resultados reais
-
-Executados no worktree com Godot Standard **4.7.2.stable.official.ed1daf0bf**,
-Compatibility/OpenGL na AMD Radeon RX 580 2048SP; GUT **9.6.1** e gdlint **4.3.4**.
-Nos comandos abaixo, `godot` representa o executável absoluto mostrado acima;
+Godot Standard **4.7.2.stable.official.ed1daf0bf**, Compatibility/OpenGL na
+AMD Radeon RX 580 2048SP; GUT **9.6.1**; gdlint **4.3.4**.
+Nos comandos, `godot` é o executável absoluto mostrado na seção Jogar;
 `gdlint` está em `C:/Users/Sarumano/Music/ossuvar-tools/Scripts/gdlint.exe`.
+Comandos executados na raiz do worktree:
 
-| Comando | Exit | Resultado real final |
+| Comando | Exit | Saída real final |
 | --- | --- | --- |
-| `godot --headless --path . --editor --import` | 0 | Importação concluída, sem ERROR/WARNING/SCRIPT ERROR |
-| `gdlint data/lateral_rules.gd combat/lateral_fighter.gd core/lateral_session.gd world/lateral tests/test_lateral.gd tests/lateral_playthrough.gd` | 0 | `Success: no problems found` |
-| `godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests -gexit` | 0 | 11 scripts; 55 testes; 54 passando; 1 pending; 630 asserts; 2,661 s |
-| `godot --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests -gexit` | 0 | 11 scripts; 55/55 passando; 635 asserts; 3,193 s; `All tests passed!` |
-| `godot --path . res://world/lateral/lateral.tscn --quit-after 90` | 0 | Cena própria abre com display, sem erros |
-| `godot --path . --script res://tests/lateral_playthrough.gd -- --evidence=C:/Users/Sarumano/Music/OSSUVAR-LATERAL00-EVIDENCIAS/playthrough-approved` | 0 | Percurso concluído; 94 capturas, saída e reinício verificados |
+| `godot --headless --path . --editor --import` | 0 | Importação concluída sem ERROR/WARNING/SCRIPT ERROR |
+| `gdlint data/lateral_rules.gd combat/lateral_fighter.gd core/lateral_session.gd world/lateral tests/test_lateral.gd tests/test_lateral_mvp.gd tests/lateral_playthrough.gd` | 0 | Success: no problems found |
+| `godot --headless --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests -gexit` | 0 | 12 scripts, 60 testes, 59 passando, 1 pending, 681 asserts, 2,908 s |
+| `godot --path . -s addons/gut/gut_cmdln.gd -gdir=res://tests -gexit` | 0 | 12 scripts, 60/60 passando, 686 asserts, 3,6 s; All tests passed! |
+| `godot --path . --script res://tests/lateral_playthrough.gd -- --evidence=C:/Users/Sarumano/Music/OSSUVAR-LATERAL00-EVIDENCIAS/mvp-definitivo` | 0 | Percurso completo, três golpes no esqueleto, oito no chefe, vitória, derrota/retry separados e reinício novo; 110 frames capturados |
 
-O pending headless é o teste **herdado** de ponteiro nativo em
-`test_enemy_health.gd`. Duas execuções gráficas intermediárias falharam na
-linha 63 desse mesmo teste (`target=-1`, esperado 0); houve também execução
-anterior com 55/55. A última execução voltou a passar 55/55, sem alterar ou
-enfraquecer qualquer teste legado. Isso evidencia instabilidade ambiental;
-foco/ponteiro é hipótese, não causa demonstrada. Conferir clique/automapa da
-arena no Editor. Logs de falha e resultado final foram preservados externamente.
+O pending headless é o teste legado de ponteiro nativo em test_enemy_health.gd.
+Na entrega anterior houve oscilação gráfica nesse teste, preservada nos logs;
+esta rodada final passou 60/60. Não foi removida ou enfraquecida sua verificação.
+Os cinco checkpoints legados, incluindo RNG state, continuam passando intactos.
 
-Os seis testes novos passaram em todos os runs da suíte: dano uma vez por
-execução, novo ataque independente, preparação/recuperação sem acerto,
-dano consultando Stats, morte/cancelamento sem repetição, cura sem ressurreição,
-entrada bloqueada após morte, reinício independente de vida/Stats/RNG, salto
-somente no chão, aterrissagem e descarte do ledger. Fixture e cinco checkpoints
-legados, inclusive RNG state, passaram sem alteração de expectativas.
+Os 11 testes laterais cobrem: dano único por ataque, Stats como fonte de dano,
+preparação/recuperação, morte/cancelamento sem repetição, entrada bloqueada,
+salto/aterrissagem, reinício independente, ledger limitado, nós removidos,
+parede nos dois sentidos, passos grandes, ausência de acerto tardio, menu,
+chefe como condição da saída e nova partida após conclusão.
 
-O driver gráfico usa input sintético com física real, sem teleporte/remoção
-de colisões para completar o trajeto. Mantém o movimento solicitado quando o
-SO libera teclas por mudança de foco; força render antes das capturas para não
-aguardar indefinidamente um frame de janela ocluída. Tentativas anteriores do
-driver expiraram/falharam; o registro final acima é o percurso concluído com
-logs sem erros, não resultado inferido de uma execução parcial.
+## Evidências, inspeção e pendências
 
-```text
-LATERAL_PLAYTHROUGH_OK: esquerda/direita, salto, duas plataformas, aterrissagens,
-obstaculo solido, 3 ataques, esqueleto morto, camera limitada, saida e R.
-CAPTURES=94; input sintetico / fisica real; nao homologacao manual.
-```
+Pasta externa `C:/Users/Sarumano/Music/OSSUVAR-LATERAL00-EVIDENCIAS/`:
 
-## Evidências e limites visuais
+- Logs finais: mvp_import.log, mvp_lint.log, mvp_headless.log,
+  mvp_graphical.log e mvp_playthrough_final.log.
+- `mvp-definitivo/00_menu.png`, `01_inicio.png`, `02_salto.png`,
+  `03_plataforma.png`, `04_combate_*.png`, `05_obstaculo_solido.png`,
+  `06_plataforma_sobre_vao.png`, `07_chefe_*.png`, `08_chefe_derrotado.png`
+  e `09_encerramento.png`: viewport real 1280×720.
+- `OSSUVAR_MVP_lateral.gif`: 23,41 s, 1280×720, 930196 bytes;
+  110 capturas mais abertura/encerramento mantidos, codificados em 97 quadros.
+  Duração pelos frames físicos/60 Hz, arredondada para 10 ms. Paleta de 256 cores;
+  PNGs são a referência de cor. `mvp_gif_result.json` contém a releitura do GIF.
+- `10_derrota_forcada.png` e `11_jogar_novamente.png`: prova separada da UI,
+  depois de vencer. Somente nessa prova a morte é acionada diretamente por
+  Health.damage para inspecionar a tela/retry. Não integra o GIF do percurso;
+  não foi usada para derrotar inimigos, aumentar dano ou completar o jogo.
 
-Pasta externa: `C:/Users/Sarumano/Music/OSSUVAR-LATERAL00-EVIDENCIAS/`.
-Logs: import.log, lint.log, gut_headless.log, gut_graphical.log,
-gut_graphical_pointer_failure.log, scene_launch.log e playthrough_approved.log.
+Input do roteiro é sintético, com física real, sem teleporte ou remoção de
+colisões para vencer. O script posiciona-se usando os controles, espera a
+recuperação e verifica dano exato de 16 por golpe. Restaura movimento sintético
+quando o SO muda o foco e força render antes de salvar capturas. Tentativas
+anteriores do roteiro falharam; a execução final acima concluiu sem erros.
 
-Capturas 1280×720 em `playthrough-approved/`: `01_inicio.png`, `02_salto.png`,
-`03_plataforma.png`, `04_combate_0.png` a `04_combate_2.png`,
-`05_obstaculo_solido.png`, `06_plataforma_sobre_vao.png`, `07_saida.png`.
-O sufixo de pasta identifica o run técnico final, não homologação do responsável.
-`LATERAL00_percurso.gif`: 1280×720, 16,57 s, 94 imagens de origem codificadas
-em 77 quadros após combinação dos idênticos. Duração por frames físicos/60 Hz,
-arredondada a 10 ms; paleta reduzida a 256 cores. Sem instalar ferramentas.
+Foram inspecionadas visualmente as capturas de início, combate, chefe,
+encerramento e derrota, além das plataformas/colisões. Isso é inspeção das
+imagens renderizadas; o roteiro automatizado não é homologação humana.
+Ainda validar no Editor sensação de movimento, controle aéreo, anúncio,
+alcance visual, sobreposição dos atores, dificuldade e acabamento da arte.
 
-Inspeção visual do executor: capturas reais de início, salto, aterrissagem,
-anúncio de ataque, combate, bloco, plataforma sobre o vão, câmera deslocada e
-saída. HUD corrigido após a primeira captura. O roteiro verifica movimento,
-colisões e conclusão automaticamente; não é controle humano nem substitui
-observação contínua no Editor. Ajuste fino de sensação, animação, colisão e
-acabamento continua pendente do responsável. Não se declara equivalência ao
-movimento/acabamento de Monster Boy nem aprovação estética das silhuetas.
+## Resumo para continuidade
 
-## Perguntas / revisão necessária
-
-- Validar sensação do salto, controle aéreo, legibilidade e compromisso do ataque
-  no Editor antes de autorizar migração maior.
-- Se FreeKnight for desejado, esclarecer a condição de IA com o autor;
-  a cena entregue funciona integralmente sem ele.
-- Reproduzir o teste de clique/automapa nativo da arena devido à oscilação
-  registrada; ele não foi descartado ou marcado pending no display gráfico.
-
-Nenhum sistema de campanha, inventário, skills, geração procedural, save,
-áudio ou exportação Windows foi iniciado. Nenhum PR foi mesclado.
+MVP funcional fechado no escopo aprovado. Revisar primeiro os arquivos Fighter,
+Rules, Actor, testes e este relatório no PR #9. Conservar os componentes da base
+ e a arena. Qualquer expansão para quatro atos, quatro finais, sistemas de
+progressão ou assets finais exige seu recorte próprio. Nenhum merge foi feito.

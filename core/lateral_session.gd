@@ -4,6 +4,7 @@ extends RefCounted
 
 var player: LateralFighter
 var enemy: LateralFighter
+var boss: LateralFighter
 var rng_context: RngContext
 
 
@@ -21,5 +22,12 @@ func _init(rules: LateralRules) -> void:
 		rules.enemy_prepare,
 		rules.active,
 		rules.enemy_recovery
+	)
+	boss = LateralFighter.new(
+		rules.boss_health,
+		rules.offense(rules.boss_damage),
+		rules.boss_prepare,
+		rules.active,
+		rules.boss_recovery
 	)
 	rng_context = Rng.create_context("lateral_probe", rules.seed_value)

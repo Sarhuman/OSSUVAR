@@ -4,6 +4,7 @@ extends SceneTree
 var stage: Node2D
 var ticks: int = 0
 var picture: int = 0
+var recording: bool = true
 var output: String = ""
 var frame_times: Array[Dictionary] = []
 var held_movement: Dictionary[int, bool] = {}
@@ -36,7 +37,7 @@ func step(count: int) -> void:
 		await physics_frame
 		await process_frame
 		ticks += 1
-		if ticks % 6 == 0:
+		if ticks % 6 == 0 and recording:
 			snapshot("frame_%03d" % picture)
 			picture += 1
 
@@ -76,12 +77,46 @@ func land(height: float) -> void:
 	assert(false, "Aterrissagem incorreta: %s" % stage.player.position)
 
 
+func fight(target: Node2D, strikes: int, label: String) -> void:
+	for attack: int in strikes:
+		while stage.player.fighter.phase() != 0:
+			await step(1)
+		if absf(target.position.x - stage.player.position.x) < 30.0:
+			var away: Key = KEY_A if target.position.x >= stage.player.position.x else KEY_D
+			key(away, true)
+			while absf(target.position.x - stage.player.position.x) < 38.0:
+				await step(1)
+			key(away, false)
+		var direction: Key = KEY_D if target.position.x > stage.player.position.x else KEY_A
+		key(direction, true)
+		var timeout: int = 0
+		while absf(target.position.x - stage.player.position.x) > 50.0 and timeout < 120:
+			await step(1)
+			timeout += 1
+		await step(1)
+		key(direction, false)
+		var before: float = target.fighter.health.current()
+		await tap(KEY_J)
+		assert(stage.player.fighter.phase() != 0)
+		await step(12)
+		snapshot("%s_%d" % [label, attack])
+		while stage.player.fighter.phase() != 0:
+			await step(1)
+		assert(target.fighter.health.current() == maxf(0, before - 16.0))
+	assert(target.fighter.health.is_dead(), "Combate deve concluir sem alterar o dano")
+	assert(not stage.session.player.health.is_dead())
+
+
 func run() -> void:
-	create_timer(55).timeout.connect(func() -> void: quit(1))
+	create_timer(65).timeout.connect(func() -> void: quit(1))
 	stage = (load("res://world/lateral/lateral.tscn") as PackedScene).instantiate() as Node2D
 	root.add_child(stage)
 	await step(20)
 	assert(stage.player.is_on_floor())
+	assert(not stage.active)
+	snapshot("00_menu")
+	await tap(KEY_ENTER)
+	assert(stage.active)
 	snapshot("01_inicio")
 	var before: float = stage.player.position.x
 	key(KEY_A, true)
@@ -97,17 +132,7 @@ func run() -> void:
 	snapshot("03_plataforma")
 	await walk_to(510)
 	await land(620)
-	for attack: int in 3:
-		var direction: Key = KEY_D if stage.enemy.position.x > stage.player.position.x else KEY_A
-		key(direction, true)
-		await step(1)
-		key(direction, false)
-		await tap(KEY_J)
-		await step(12)
-		snapshot("04_combate_%d" % attack)
-		await step(20)
-	assert(stage.session.enemy.health.is_dead(), "Três ataques devem derrotar o esqueleto")
-	assert(not stage.session.player.health.is_dead())
+	await fight(stage.enemy, 3, "04_combate")
 	key(KEY_D, true)
 	await step(100)
 	key(KEY_D, false)
@@ -126,17 +151,31 @@ func run() -> void:
 	await tap(KEY_SPACE)
 	await walk_to(1235)
 	await land(620)
+	await walk_to(2000)
+	await fight(stage.boss, 8, "07_chefe")
+	snapshot("08_chefe_derrotado")
 	await walk_to(2260)
 	await step(3)
 	assert(stage.completed)
 	assert(stage.camera.get_screen_center_position().x <= 1761.0)
-	snapshot("07_saida")
+	snapshot("09_encerramento")
+	recording = false
+	await tap(KEY_ENTER)
+	assert(stage.active and not stage.completed)
+	stage.session.player.health.damage(999.0)  # Somente prova da tela de derrota, após vencer.
+	await step(3)
+	snapshot("10_derrota_forcada")
+	var dead_health: RefCounted = stage.session.player.health
+	await tap(KEY_ENTER)
+	assert(stage.active and dead_health.is_dead())
+	assert(stage.session.player.health.current() == 100.0)
+	snapshot("11_jogar_novamente")
 	var old: RefCounted = stage.session
 	await tap(KEY_R)
-	assert(stage.session != old and not stage.completed)
+	assert(stage.session != old and not stage.completed and not stage.active)
 	assert(stage.session.player.health.current() == 100.0)
 	print("LATERAL_PLAYTHROUGH_OK: esquerda/direita, salto, duas plataformas, aterrissagens,")
-	print("obstaculo solido, 3 ataques, esqueleto morto, camera limitada, saida e R.")
+	print("obstaculo, esqueleto e chefe derrotados, camera, encerramento e nova sessao.")
 	print("CAPTURES=", picture, "; input sintetico / fisica real; nao homologacao manual.")
 	if output != "":
 		var file: FileAccess = FileAccess.open(output.path_join("frames.json"), FileAccess.WRITE)
