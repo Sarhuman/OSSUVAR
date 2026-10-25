@@ -6,6 +6,7 @@ signal changed
 signal feedback(cell: Vector2, message: String, kind: String)
 
 const STEP: float = 1.0 / 25.0
+const EQUIPMENT_SOURCE_ID: StringName = &"equipment:ferro_funerario"
 var rules: ArenaRules
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var grid: AStarGrid2D = AStarGrid2D.new()
@@ -17,6 +18,7 @@ var drops: Array[Dictionary] = []
 var inventory: Array[String] = []
 var walls: Array[Vector2i] = []
 var player_health: HealthComponent
+var player_stats: StatsComponent
 var mana: float
 var vigor: float
 var level: int = 1
@@ -36,6 +38,7 @@ func _init(config: ArenaRules) -> void:
 	rules = config
 	rng.seed = rules.seed_value
 	player_health = HealthComponent.new(rules.health)
+	player_stats = StatsComponent.new(rules)
 	mana = rules.mana
 	vigor = rules.vigor
 	grid.region = Rect2i(0, 0, rules.size, rules.size)
@@ -113,7 +116,7 @@ func tick() -> void:
 				attack_left = rules.attack_frames
 				attack_flash = 6
 				if rng.randf() <= CombatMath.hit_chance(100.0, 30.0, level, 1):
-					_hurt(target, rules.player_damage + (6 if equipped else 0))
+					_hurt(target, player_stats.snapshot().basic_damage)
 				else:
 					feedback.emit(enemies[target].pos, "ERROU", "miss")
 		elif path.is_empty() or destination != Vector2i(enemies[target].pos.round()):
@@ -204,7 +207,7 @@ func cast_whirlwind() -> void:
 	skill_flash = 12
 	for i: int in enemies.size():
 		if enemies[i].pos.distance_to(player) <= rules.skill_radius:
-			_hurt(i, rules.player_damage + 8)
+			_hurt(i, player_stats.snapshot().giro_damage)
 	changed.emit()
 
 
@@ -236,6 +239,10 @@ func collect() -> void:
 
 func equip() -> void:
 	if not inventory.is_empty() and not player_health.is_dead():
+		if not player_stats.set_source(EQUIPMENT_SOURCE_ID, rules.equipment_damage_bonus):
+			return
 		equipped = true
-		notice = "Ferro funerário equipado: +6 de dano no ataque básico."
+		notice = (
+			"Ferro funerário equipado: +%d de dano no ataque básico." % rules.equipment_damage_bonus
+		)
 		changed.emit()
