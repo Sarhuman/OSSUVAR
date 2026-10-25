@@ -16,7 +16,7 @@ var enemies: Array[Dictionary] = []
 var drops: Array[Dictionary] = []
 var inventory: Array[String] = []
 var walls: Array[Vector2i] = []
-var health: float
+var player_health: HealthComponent
 var mana: float
 var vigor: float
 var level: int = 1
@@ -35,7 +35,7 @@ var notice: String = "Clique no chão para caminhar."
 func _init(config: ArenaRules) -> void:
 	rules = config
 	rng.seed = rules.seed_value
-	health = rules.health
+	player_health = HealthComponent.new(rules.health)
 	mana = rules.mana
 	vigor = rules.vigor
 	grid.region = Rect2i(0, 0, rules.size, rules.size)
@@ -76,7 +76,7 @@ func _add_wall(cell: Vector2i) -> void:
 
 
 func walk_to(cell: Vector2i) -> void:
-	if health <= 0.0 or not grid.is_in_boundsv(cell) or grid.is_point_solid(cell):
+	if player_health.is_dead() or not grid.is_in_boundsv(cell) or grid.is_point_solid(cell):
 		return
 	target = -1
 	destination = cell
@@ -87,14 +87,19 @@ func walk_to(cell: Vector2i) -> void:
 
 
 func attack_enemy(index: int) -> void:
-	if index < 0 or index >= enemies.size() or enemies[index].health.is_dead():
+	if (
+		player_health.is_dead()
+		or index < 0
+		or index >= enemies.size()
+		or enemies[index].health.is_dead()
+	):
 		return
 	walk_to(Vector2i(enemies[index].pos.round()))
 	target = index
 
 
 func tick() -> void:
-	if health <= 0.0:
+	if player_health.is_dead():
 		return
 	attack_left = maxi(0, attack_left - 1)
 	skill_left = maxi(0, skill_left - 1)
@@ -135,9 +140,10 @@ func _update_enemy(enemy: Dictionary) -> void:
 	if enemy.windup > 0:
 		enemy.windup -= 1
 		if enemy.windup == 0 and distance <= 1.7:
-			health = maxf(0.0, health - rules.enemy_damage)
-			feedback.emit(player, str(rules.enemy_damage), "hurt")
-			if health == 0.0:
+			var result: HealthComponent.Result = player_health.damage(rules.enemy_damage)
+			if result.accepted:
+				feedback.emit(player, str(rules.enemy_damage), "hurt")
+			if result.died_now:
 				notice = "Você caiu. Pressione R para recomeçar."
 		return
 	if distance > rules.aggro_radius:
@@ -181,7 +187,7 @@ func apply_enemy_hit(hit: EnemyHit) -> HealthComponent.Result:
 		while xp >= rules.xp_per_level:
 			xp -= rules.xp_per_level
 			level += 1
-			health = rules.health
+			player_health.heal(player_health.maximum())
 			feedback.emit(player, "NÍVEL %d" % level, "loot")
 		notice = "Aproxime-se do drop e pressione E para recolher."
 		if kills == enemies.size():
@@ -191,7 +197,7 @@ func apply_enemy_hit(hit: EnemyHit) -> HealthComponent.Result:
 
 
 func cast_whirlwind() -> void:
-	if health <= 0.0 or skill_left > 0 or mana < rules.skill_cost:
+	if player_health.is_dead() or skill_left > 0 or mana < rules.skill_cost:
 		return
 	mana -= rules.skill_cost
 	skill_left = rules.skill_frames
@@ -203,15 +209,19 @@ func cast_whirlwind() -> void:
 
 
 func drink_potion() -> void:
-	if health <= 0.0 or potions == 0 or health >= rules.health:
+	if (
+		player_health.is_dead()
+		or potions == 0
+		or player_health.current() >= player_health.maximum()
+	):
 		return
 	potions -= 1
-	health = minf(rules.health, health + rules.health * 0.5)
+	player_health.heal(player_health.maximum() * 0.5)
 	changed.emit()
 
 
 func collect() -> void:
-	if health <= 0.0:
+	if player_health.is_dead():
 		return
 	for drop: Dictionary in drops:
 		if not drop.taken and player.distance_to(drop.pos) < 2.0:
@@ -225,7 +235,7 @@ func collect() -> void:
 
 
 func equip() -> void:
-	if not inventory.is_empty() and health > 0.0:
+	if not inventory.is_empty() and not player_health.is_dead():
 		equipped = true
 		notice = "Ferro funerário equipado: +6 de dano no ataque básico."
 		changed.emit()

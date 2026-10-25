@@ -155,7 +155,7 @@ func _penitent(at: Vector2) -> void:
 	draw_set_transform(at)
 	draw_circle(Vector2.ZERO, 12, Color(0, 0, 0, 0.4))
 	draw_arc(Vector2.ZERO, 14, 0, TAU, 24, Color("bca775"), 1.1)
-	var cloak: Color = Color("4d6058") if run.health > 0 else Color("383632")
+	var cloak: Color = Color("4d6058") if not run.player_health.is_dead() else Color("383632")
 	draw_colored_polygon(
 		PackedVector2Array(
 			[Vector2(-6, -27), Vector2(5, -28), Vector2(11, -4), Vector2(0, -1), Vector2(-10, -5)]

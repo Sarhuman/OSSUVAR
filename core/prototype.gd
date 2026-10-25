@@ -111,7 +111,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_F:
 				if hud.inventory_open:
 					run.equip()
-	if hud.paused or hud.inventory_open or run.health <= 0.0:
+	if hud.paused or hud.inventory_open or run.player_health.is_dead():
 		return
 	if (
 		event.is_action_pressed("potion_1")
