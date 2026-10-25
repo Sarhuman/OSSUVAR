@@ -80,13 +80,13 @@ func test_loot_capacity_preserves_uncollected_drop() -> void:
 
 func test_death_freezes_actions() -> void:
 	var run: ArenaRun = new_run()
-	run.health = 0.0
+	run.player_health.damage(run.rules.health)
 	run.walk_to(Vector2i(4, 4))
 	run.cast_whirlwind()
 	run.drink_potion()
 	run.tick()
 	assert_eq(run.player, Vector2(3, 3))
-	assert_eq(run.health, 0.0)
+	assert_eq(run.player_health.current(), 0.0)
 	assert_eq(run.mana, run.rules.mana)
 	assert_eq(run.potions, 4)
 
@@ -95,21 +95,21 @@ func test_enemy_telegraph_delays_damage() -> void:
 	var run: ArenaRun = new_run()
 	run.enemies[0].pos = run.player + Vector2(0.7, 0)
 	run.tick()
-	assert_eq(run.health, run.rules.health)
+	assert_eq(run.player_health.current(), run.rules.health)
 	assert_gt(run.enemies[0].windup, 0)
 	for i: int in 10:
 		run.tick()
-	assert_eq(run.health, run.rules.health - run.rules.enemy_damage)
+	assert_eq(run.player_health.current(), run.rules.health - run.rules.enemy_damage)
 
 
 func test_potion_does_not_waste_charge_at_full_health() -> void:
 	var run: ArenaRun = new_run()
 	run.drink_potion()
 	assert_eq(run.potions, 4)
-	run.health = 10.0
+	run.player_health.damage(run.rules.health - 10.0)
 	run.drink_potion()
 	assert_eq(run.potions, 3)
-	assert_eq(run.health, 70.0)
+	assert_eq(run.player_health.current(), 70.0)
 
 
 func test_fixed_seed_reproduces_basic_combat() -> void:
@@ -122,7 +122,7 @@ func test_fixed_seed_reproduces_basic_combat() -> void:
 	for i: int in 150:
 		a.tick()
 		b.tick()
-	assert_eq(a.health, b.health)
+	assert_eq(a.player_health.current(), b.player_health.current())
 	assert_eq(a.kills, b.kills)
 	assert_eq(a.enemies[0].health.current(), b.enemies[0].health.current())
 
@@ -149,8 +149,8 @@ func test_clear_arena_levels_up_and_does_not_reward_dead_enemies_again() -> void
 func test_potion_empty_and_mana_regeneration_cap() -> void:
 	var run: ArenaRun = new_run()
 	run.potions = 0
-	run.health = 1.0
+	run.player_health.damage(run.rules.health - 1.0)
 	run.drink_potion()
-	assert_eq(run.health, 1.0)
+	assert_eq(run.player_health.current(), 1.0)
 	run.tick()
 	assert_eq(run.mana, run.rules.mana)

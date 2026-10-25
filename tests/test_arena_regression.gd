@@ -30,7 +30,7 @@ func snapshot(run: ArenaRun) -> String:
 	return JSON.stringify(
 		[
 			run.player,
-			run.health,
+			run.player_health.current(),
 			run.mana,
 			run.vigor,
 			run.level,

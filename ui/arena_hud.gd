@@ -45,7 +45,14 @@ func _draw() -> void:
 	draw_rect(Rect2(0, h - 128, w, 128), Color(0.035, 0.045, 0.04, 0.97))
 	draw_line(Vector2(0, h - 128), Vector2(w, h - 128), Color("5b5340"))
 	var bar_w: float = minf(265, w * 0.23)
-	bar(Vector2(28, h - 96), bar_w, run.health, run.rules.health, "VIDA", Color("a75448"))
+	bar(
+		Vector2(28, h - 96),
+		bar_w,
+		run.player_health.current(),
+		run.player_health.maximum(),
+		"VIDA",
+		Color("a75448")
+	)
 	bar(Vector2(28, h - 65), bar_w, run.mana, run.rules.mana, "MANA", Color("587d92"))
 	bar(Vector2(28, h - 34), bar_w, run.vigor, run.rules.vigor, "VIGOR", Color("85864e"))
 	text(Vector2(330, h - 99), "FERRO", 11, accent)
@@ -71,11 +78,11 @@ func _draw() -> void:
 		_draw_map(Vector2(w - 204, 110))
 	if inventory_open:
 		_draw_inventory(Vector2(w - 350, 100))
-	if paused or run.health <= 0.0:
+	if paused or run.player_health.is_dead():
 		draw_rect(Rect2(Vector2.ZERO, size), Color(0.015, 0.02, 0.015, 0.8))
 		text(
 			Vector2(w * 0.5 - 150, h * 0.5 - 25),
-			"A VIGÍLIA AGUARDA" if run.health > 0 else "O PÓ TE RECLAMA",
+			"A VIGÍLIA AGUARDA" if not run.player_health.is_dead() else "O PÓ TE RECLAMA",
 			27,
 			accent
 		)
