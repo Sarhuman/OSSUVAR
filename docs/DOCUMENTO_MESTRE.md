@@ -5,6 +5,8 @@
 Registro histórico de planejamento. A direção narrativa vigente é a v0.4 fornecida pelo responsável. Cosmologia, Halric, chefes e finais do bloco histórico abaixo foram substituídos. Para a continuidade, consulte [NARRATIVA.md](NARRATIVA.md) e [MISSOES_ATO_I.md](MISSOES_ATO_I.md). Consulte também [IMPACTO_NARRATIVO_V04.md](IMPACTO_NARRATIVO_V04.md). A seção original abaixo é preservada; status atuais estão em [DECISOES.md](DECISOES.md) e [ESTADO_PROJETO.md](ESTADO_PROJETO.md). Isso não aprova automaticamente contratos mecânicos nem declara entregas de código.
 
 
+Adaptação literária de 25/10/2026: [NOVELA_CANONICA.md](NOVELA_CANONICA.md), alinhada ao cânone v0.4 e aos quatro finais. A conciliação está em [INTEGRACAO_NOVELA.md](INTEGRACAO_NOVELA.md). A novela antiga enviada em Word, com Irrik/Edda como motor e Halric sepultado na cripta, não substitui o cânone vigente.
+
 O texto original é preservado integralmente abaixo.
 
 ```text
@@ -260,6 +262,7 @@ CRITÉRIOS DE ACEITE
 • D-02: Aprovar o nome OSSUVAR e a premissa da história.
 • D-03: Autorização formal para iniciar a T-001. Até lá, nenhum código é pedido ao Codex.
 ```
+
 
 
 

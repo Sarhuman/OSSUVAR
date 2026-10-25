@@ -1,8 +1,10 @@
-> **Contém spoilers da campanha e dos desfechos.** Versão v0.4, de 24/10/2026. Incorpora as definições do responsável sobre Odran, Maera, Edrin, Lysa, o pacto e os quatro finais. Substitui os pontos conflitantes das versões anteriores. Texto atualizado não significa gameplay implementado.
+> **Contém spoilers da campanha e dos desfechos.** Cânone v0.4, com conciliação literária v0.4.1 de 25/10/2026. Incorpora as definições do responsável sobre Odran, Maera, Edrin, Lysa, o pacto e os quatro finais. Substitui os pontos conflitantes das versões anteriores. Texto atualizado não significa gameplay implementado.
 
 # OSSUVAR — O Décimo Quarto Sino
 
 O título desta história expandida não altera por si só o nome de trabalho do jogo, **OSSUVAR — Os Treze Sinos**.
+
+A versão em prosa está em [NOVELA_CANONICA.md](NOVELA_CANONICA.md). A correspondência entre capítulos, atos e requisitos está em [INTEGRACAO_NOVELA.md](INTEGRACAO_NOVELA.md). A adaptação preserva o cânone v0.4; os quatro epílogos são alternativas, não acontecimentos cumulativos.
 
 ## 1. A verdade por trás dos sinos
 
@@ -191,9 +193,12 @@ Ainda precisam de contratos delimitados:
 - Interação com as três âncoras, comportas e ritual da Pranteadora; a campanha deve permitir voltar ao Afogadouro depois das minas.
 - Matriz explícita de confiança, preparações, presença/sobrevivência e avisos antes de decisões irreversíveis.
 - Forma jogável do confronto com Halric e confirmação informada dos desfechos.
-- Diálogos, cutscenes puláveis, parâmetros de encontros e persistência por tarefa própria.
+- Adaptação dos diálogos literários para cenas jogáveis, cutscenes puláveis, parâmetros de encontros e persistência por tarefa própria.
 
 O histórico relativo completo está em [PACTO_E_DESFECHOS.md](PACTO_E_DESFECHOS.md). Não reintroduzir Halric morto no Ato I nem tratar o fragmento usado no bebê como algo criado apenas recentemente.
 
+A novela desenvolve a devolução do nome de Edrin no retorno à Vigília após o Afogadouro e a revelação de Lysa nas minas, antes da escolha final. A primeira lista continua descoberta do Ato II; o nome não precisa ser devolvido dentro da galeria. A origem do protagonista não fica restrita a um epílogo.
+
 Essas tarefas não bloqueiam Health, Stats ou RNG. Esta atualização completa o texto e mantém código e balanceamento fora do escopo.
+
 

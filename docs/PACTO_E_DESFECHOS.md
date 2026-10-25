@@ -1,6 +1,8 @@
-> **Contém spoilers completos.** Expansão narrativa v0.4, de 24/10/2026, baseada nas definições fornecidas pelo responsável. Complementa a história expandida; não representa sistemas implementados.
+> **Contém spoilers completos.** Cânone v0.4, conciliado com a novela em 25/10/2026, baseada nas definições fornecidas pelo responsável. Complementa a história expandida; não representa sistemas implementados.
 
 # O pacto, os primeiros selados e os quatro desfechos
+
+A realização literária está em [NOVELA_CANONICA.md](NOVELA_CANONICA.md); consulte [INTEGRACAO_NOVELA.md](INTEGRACAO_NOVELA.md) para a correspondência com os atos. As condições abaixo continuam sendo referência para os quatro finais.
 
 ## 1. Odran Vhal e o segredo dos soldados
 
@@ -186,6 +188,15 @@ Consequências aparecem ao longo da campanha: quem permanece ou deixa o acampame
 
 O momento exato de revelar ao jogador a história de Lysa pode ser trabalhado em uma cena específica, mas não deve ocorrer apenas depois de uma escolha que dependa dela. Nenhuma revisão pode voltar a afirmar que Halric morreu e foi selado no Ato I.
 
-## 9. Limites da atualização
+## 9. Relação com os epílogos literários
+
+A novela mostra uma trajetória em que o protagonista investiga provas e constrói apoio, seguida de quatro epílogos alternativos. Essa presença literária dos aliados não elimina suas condições de confiança nem garante sobrevivência em qualquer partida. A Testemunha mostra uma preparação que consegue proteger pessoas; variantes de perdas continuam dependendo de fatos de missão, não de sorte oculta.
+
+Em O Silêncio, a ida de volta ao Afogadouro e a quebra das três âncoras pertencem somente àquela rota. Em O Guardião, Dagna conhece o preço antes da escolha. Em Os Nomes dos Vivos, Cael e Edrin participam por confiança, as provas e os registros são necessários e a recusa isolada não resolve o rito. A libertação não exige perdão nem uma punição secreta adicional.
+
+A fala breve de Edrin pode acontecer no retorno à Vigília após recuperar a lista no Ato II. O nome continua sendo dele; não é uma senha consumida. Detalhes como gestos, ferramentas, arquivos e personagens secundários da novela não criam novas APIs, poderes de skills ou requisitos obrigatórios dos finais.
+
+## 10. Limites da atualização
 
 As identidades e motivações antes pendentes foram preenchidas: Odran, Maera, Edrin, Lysa, origem do protagonista e quatro desfechos. Ainda faltam nomes pessoais de chefes, idade/datas exatas, implementação das âncoras, matriz de consequências e condições técnicas de irreversibilidade. Essas são tarefas delimitadas de conteúdo/gameplay, não autorização para o executor inventar outra cosmologia ou mudar Health/Stats/RNG.
+

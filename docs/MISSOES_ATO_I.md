@@ -1,6 +1,8 @@
-> **Contém spoilers do prólogo e do Ato I.** Versão narrativa v0.4, de 24/10/2026. Preserva a cadeia v0.3 e incorpora provas e alianças v0.4; implementação e contratos mecânicos continuam separados.
+> **Contém spoilers do prólogo e do Ato I.** Cânone v0.4, com conciliação literária de 25/10/2026. Preserva a cadeia v0.3 e incorpora provas e alianças v0.4; implementação e contratos mecânicos continuam separados.
 
 # Prólogo e Ato I — A última vigília
+
+Cenas de referência: prólogo e capítulos 1–6 de [NOVELA_CANONICA.md](NOVELA_CANONICA.md). Os IDs abaixo permanecem documentais e não são alterados pela numeração literária.
 
 ## Fluxo narrativo
 
@@ -50,9 +52,19 @@ O encerramento pode ocorrer pelo diário e pela atualização do hub. Não bloqu
 | Dagna | Respeito à sua proposta e autonomia | Lidera defesa se confiar; pode partir com combatentes se ignorada ou usada |
 | Cael | Provas entregues e oportunidade de investigar | Decifra rito e nomes; recusa apagamento deliberado da verdade |
 | Tobbe | Reconhecimento dos erros da Ordem, sem exigir mentira | Abre passagem e ajuda com rito/pó; pressão para mentir rompe ajuda |
-| Corvo Mudo | Desenhos do sino rachado e rosto sem olhos preservados no diário | O nome ligado aos desenhos aparece no Ato II e sua explicação pode vir no IV |
+| Corvo Mudo | Desenhos do sino rachado e rosto sem olhos preservados no diário | A primeira lista aparece no Ato II; a devolução do nome e o testemunho podem ocorrer no retorno à Vigília após o Afogadouro |
 
 Esta tabela não define uma escala numérica de reputação. Condições para presença, sobrevivência e apoio no final precisam de fatos explícitos de missão e aviso antes de decisões irreversíveis.
+
+## Pistas desenvolvidas na novela
+
+- Campos: memórias passivas e identificação dos mortos, sem extermínio obrigatório.
+- Bosque: registros de abastecimento, fome e violência; material para investigação posterior.
+- Estrada: guias funerárias, selos de Halric e carta sobre a recusa dos soldados.
+- Mosteiro: versões distintas dos ofícios, assinatura de Maera, sucessão de guardiões e arquivo de sucessão real.
+- Cripta: nota recente de Halric, relatórios de apagamento e comandante guardando a passagem.
+
+São referências de conteúdo. Não acrescentam missão, nome definitivo de chefe, recompensa ou gate técnico. A entrega das provas a Cael e o tratamento do Corvo podem iniciar os arcos de confiança sem antecipar a fala de Edrin ou o encontro pessoal de Halric.
 
 ## Estados e critérios de validação futura
 
@@ -70,8 +82,9 @@ Manter estados documentais `unavailable`, `available`, `active`, `objective_met`
 
 As primeiras pistas do massacre podem surgir neste ato sem antecipar toda a
 revelação. Preservar documentos como fatos, sem consumi-los como moeda de serviços.
-A primeira lista e a fala de Edrin pertencem ao Afogadouro. A origem de Lysa e
+A primeira lista é encontrada no Afogadouro; a fala de Edrin pode ocorrer no retorno à Vigília, ainda na sequência narrativa do Ato II. A origem de Lysa e
 do fragmento não é conhecida pelo protagonista no prólogo. Requisitos e custos
 estão em [PACTO_E_DESFECHOS.md](PACTO_E_DESFECHOS.md). Não tornar as três âncoras
 objetivo obrigatório de toda rota. Sem novas flags executáveis nesta revisão.
+
 

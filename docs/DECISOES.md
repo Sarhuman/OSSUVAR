@@ -1,6 +1,6 @@
 # Registro de decisões do OSSUVAR
 
-Atualizado em 24/10/2026. Este arquivo distingue instruções do responsável,
+Atualizado em 25/10/2026. Este arquivo distingue instruções do responsável,
 propostas editoriais e lacunas de gameplay. Estar escrito ou publicado não
 equivale a estar implementado ou homologado.
 
@@ -17,6 +17,7 @@ equivale a estar implementado ou homologado.
 | F-07 | Atualizar a main documental e preencher as lacunas narrativas, conforme pedido de 24/10/2026; isso não autoriza merge dos PRs de código |
 | F-08 | Incorporar a história expandida O Décimo Quarto Sino à main: pacto da guerra civil, vozes aprisionadas, Halric vivo, novos chefes e possibilidades finais. A direção do responsável substitui as propostas narrativas conflitantes da v0.2 |
 | F-09 | Incorporar Odran, Maera, Edrin, Lysa, preço do Guardião, requisitos dos quatro finais e consequências das alianças fornecidos pelo responsável |
+| F-10 | Adaptar a novela OSSUVAR.docx ao cânone com Odran, Maera, Edrin, Lysa e quatro finais; publicar a adaptação e conciliar a documentação na main, conforme autorização de 25/10/2026 |
 
 ## Propostas preservadas do planejamento original
 
@@ -33,7 +34,7 @@ equivale a estar implementado ou homologado.
 | P-09 | Marcos M0–M5 e backlog T-001–T-012 | Histórico de planejamento, não medidor automático de conclusão |
 | P-10 | PR pequeno por tarefa, draft, relatório e sem merge automático | Fluxo para código; atualização documental em main foi pedida separadamente |
 
-## Direção narrativa vigente — v0.4
+## Direção narrativa vigente — v0.4 com adaptação literária v0.4.1
 
 | ID | Tema | Resolução vigente |
 | --- | --- | --- |
@@ -51,6 +52,8 @@ equivale a estar implementado ou homologado.
 | N-12 | Filho da sepultura | Lysa morre sem saber do retorno; Halric usa fragmento do núcleo experimental e cria vínculo circunstancial |
 | N-13 | Cronologia | Núcleo experimental anterior ao nascimento, conclusão posterior e toque pleno são momentos distintos |
 | N-14 | Alianças | Dagna, Cael, Tobbe e Edrin respondem a fatos; provas não são substituídas por afinidade abstrata |
+| N-15 | Novela | NOVELA_CANONICA.md apresenta prólogo, 14 capítulos e quatro finais alternativos; nenhum epílogo é promovido a final único |
+| N-16 | Precedência literária | Requisitos de PACTO_E_DESFECHOS.md continuam válidos; exemplos de cenas e aliados presentes não garantem o mesmo resultado em toda partida |
 
 Esta direção veio do responsável e não aguarda aprovação para substituir o
 roteiro antigo. Revisão de coerência, detalhes não definidos e contratos de
@@ -71,7 +74,7 @@ implementação permanecem tarefas separadas; nenhuma homologação de gameplay
 | D-09 | Contratos de gameplay | Proposta no PR #4; conciliar referências narrativas v0.2 sem mudar interfaces técnicas ou aprovar números automaticamente |
 | D-10 | Morte e retorno em gameplay | Não confundir reload ou respawn com imortalidade canônica |
 | D-11 | Endgame depois do final | Narrativa admite estado anterior ao confronto; persistência/interface precisam de contrato técnico |
-| D-12 | Continuidade v0.4 | Corvo, rosto, nascimento e preço definidos; completar datas exatas, nomes de chefes e cenas, sem bloquear Health |
+| D-12 | Continuidade v0.4 | Corvo, rosto, nascimento e preço definidos; novela adaptada publicada; ainda faltam datas exatas, nomes de chefes e contratos de cenas, sem bloquear Health |
 
 ## Precedência e histórico
 
@@ -88,4 +91,4 @@ final por aparecerem numa branch.
 | 24/10/2026 | Atualização da main documental e narrativa editorial v0.2, com resoluções N-01 a N-07 |
 | 24/10/2026 | História expandida fornecida pelo responsável incorporada como v0.3; v0.2 substituída e impactos de contratos registrados |
 | 24/10/2026 | Odran/Maera/Edrin/Lysa, preço do Guardião e quatro finais incorporados à v0.4; cronologia experimental do fragmento explicitada |
-
+| 25/10/2026 | Novela adaptada publicada em Markdown; README, narrativa, missões, pacto e coordenação conciliados sem merge de código |

@@ -51,3 +51,18 @@ Health, Stats, adapters e RNG não mudam como consequência desta revisão.
 Esta atualização não mescla PRs, não altera código do executor, não aprova
 balanceamento nem implementa alianças/finais/persistência. Tarefas de conteúdo
 devem consultar a main atual antes de editar.
+
+## Conciliação literária de 25/10/2026
+
+A [novela adaptada](NOVELA_CANONICA.md) concretiza em prosa a v0.4; o mapa de
+capítulos e a precedência estão em [INTEGRACAO_NOVELA.md](INTEGRACAO_NOVELA.md).
+A versão original de OSSUVAR.docx não deve ser usada para reintroduzir Irrik/Edda
+como causa do desastre, o Sepultado como origem do pacto, Halric morto na cripta
+ou um final binário obrigatório.
+
+A devolução do nome de Edrin pode ocorrer no retorno ao hub após o Afogadouro.
+A revelação de Lysa acontece antes da decisão final; os quatro epílogos são
+alternativos. O Silêncio não impõe quebra das âncoras às demais rotas.
+
+Esta revisão mantém as interfaces e os valores dos PRs de código. Não aplicar
+cherry-pick, merge ou rebase automático da documentação sobre o trabalho local.

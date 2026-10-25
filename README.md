@@ -14,14 +14,15 @@ não significam integração ou homologação no Editor.
 
 | Frente | Estado e localização |
 | --- | --- |
-| Página principal e narrativa | Documentação nesta branch; direção narrativa v0.4 fornecida pelo responsável; cenas e gameplay ainda não implementados |
+| Página principal e narrativa | Documentação nesta branch; cânone v0.4 e novela adaptada v0.4.1; cenas e gameplay da campanha ainda não implementados |
 | Proposta documental original | [PR #1](https://github.com/Sarhuman/OSSUVAR/pull/1); conciliar com a documentação atual antes de integrar |
 | Bootstrap Godot, GUT e CI | [PR #2](https://github.com/Sarhuman/OSSUVAR/pull/2), em revisão |
 | Arena experimental | [PR #3](https://github.com/Sarhuman/OSSUVAR/pull/3), baseado na branch do PR #2 |
+| Health, Stats ofensivos e streams RNG | [PR #5](https://github.com/Sarhuman/OSSUVAR/pull/5), [#6](https://github.com/Sarhuman/OSSUVAR/pull/6), [#7](https://github.com/Sarhuman/OSSUVAR/pull/7) e [#8](https://github.com/Sarhuman/OSSUVAR/pull/8), empilhados e em draft, sem merge |
 | Ato I, catálogo de skills, loot completo e save | Planejados; a arena não conclui esses sistemas |
 | Executável Windows distribuído | Ainda não entregue |
 
-Status conferido em 24/10/2026. Consulte os PRs para mudanças posteriores.
+Status dos PRs conferido em 25/10/2026. Consulte os PRs para mudanças posteriores.
 Esta atualização altera somente documentação e não integra o código dos PRs.
 
 ## O jogo
@@ -109,6 +110,9 @@ de combate. Nenhum executável é distribuído por esta atualização documental
 
 ## Documentação
 
+- [Novela adaptada ao cânone](docs/NOVELA_CANONICA.md) — prólogo, 14 capítulos e quatro desfechos alternativos; **contém spoilers completos**.
+- [Conciliação da novela e documentação](docs/INTEGRACAO_NOVELA.md) — precedência, correspondência dos capítulos e limites da adaptação.
+
 - [Estado das branches e integração](docs/ESTADO_PROJETO.md).
 - [Registro de decisões](docs/DECISOES.md).
 - [Documento Mestre v0.1](docs/DOCUMENTO_MESTRE.md) — histórico de design, arquitetura e backlog; **contém spoilers**.
@@ -133,5 +137,6 @@ Não usar o merge de documentação como autorização implícita para mesclar c
 Licença a definir pelo responsável; não há concessão de licença aberta nesta
 página. O fluxo de contribuições externas ainda não está definido. OSSUVAR é
 um projeto independente, sem vínculo com Diablo II ou Project Diablo 2.
+
 
 
