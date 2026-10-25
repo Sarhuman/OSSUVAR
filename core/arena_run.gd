@@ -8,7 +8,8 @@ signal feedback(cell: Vector2, message: String, kind: String)
 const STEP: float = 1.0 / 25.0
 const EQUIPMENT_SOURCE_ID: StringName = &"equipment:ferro_funerario"
 var rules: ArenaRules
-var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+var rng_context: RngContext
+var rng: RandomNumberGenerator
 var grid: AStarGrid2D = AStarGrid2D.new()
 var player: Vector2 = Vector2(3, 3)
 var destination: Vector2i = Vector2i(3, 3)
@@ -36,7 +37,11 @@ var notice: String = "Clique no chão para caminhar."
 
 func _init(config: ArenaRules) -> void:
 	rules = config
-	rng.seed = rules.seed_value
+	rng_context = Rng.create_context(
+		"arena:%d" % get_instance_id(), rules.seed_value, 1, 1, &"arena_legacy_v1"
+	)
+	assert(rng_context != null, "ArenaRun requer seed inteira não negativa.")
+	rng = rng_context.stream(&"arena", &"combat")
 	player_health = HealthComponent.new(rules.health)
 	player_stats = StatsComponent.new(rules)
 	mana = rules.mana
