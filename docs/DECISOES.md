@@ -9,15 +9,17 @@ equivale a estar implementado ou homologado.
 | ID | Decisão |
 | --- | --- |
 | F-01 | ARPG de fantasia sombria, exclusivamente 2D, em Godot 4 |
-| F-02 | Diablo II é a referência central de experiência e profundidade |
+| F-02 | Diablo II foi a referência central inicial; após F-11, permanece pesquisa anterior de atributos, builds e loot, sem exigir câmera isométrica |
 | F-03 | Claude como referência de design/arquitetura; Codex executor por tarefas; responsável define prioridades e valida no Editor |
 | F-04 | HUD com barras horizontais de Vida, Mana, Vigor e XP; apresentação isolada do modelo |
-| F-05 | Project Diablo 2 e o vídeo Maps.mp4 fornecidos como referências adicionais de mapas; identidade e assets próprios para OSSUVAR |
+| F-05 | Project Diablo 2 e Maps.mp4 foram referências adicionais de mapas; ficam como pesquisa histórica de endgame, a reavaliar para o lateral |
 | F-06 | Preparar prompts para o Codex e trabalhar na documentação/história enquanto a execução de código ocorre em outra frente |
 | F-07 | Atualizar a main documental e preencher as lacunas narrativas, conforme pedido de 24/10/2026; isso não autoriza merge dos PRs de código |
 | F-08 | Incorporar a história expandida O Décimo Quarto Sino à main: pacto da guerra civil, vozes aprisionadas, Halric vivo, novos chefes e possibilidades finais. A direção do responsável substitui as propostas narrativas conflitantes da v0.2 |
 | F-09 | Incorporar Odran, Maera, Edrin, Lysa, preço do Guardião, requisitos dos quatro finais e consequências das alianças fornecidos pelo responsável |
 | F-10 | Adaptar a novela OSSUVAR.docx ao cânone com Odran, Maera, Edrin, Lysa e quatro finais; publicar a adaptação e conciliar a documentação na main, conforme autorização de 25/10/2026 |
+| F-11 | Perspectiva lateral com plataformas, inspirada em Monster Boy and the Cursed Kingdom, substitui isometria nos novos recortes; narrativa e quatro finais preservados |
+| F-12 | Registrar protótipo lateral com ciclo completo no PR #9, com validação manual no Editor pendente; conciliar main documental sem merge do PR |
 
 ## Propostas preservadas do planejamento original
 
@@ -26,11 +28,11 @@ equivale a estar implementado ou homologado.
 | P-01 | Nome OSSUVAR e subtítulo Os Treze Sinos | Uso de trabalho; verificação de marca e homologação formal pendentes |
 | P-02 | Premissa e quatro atos | Direção v0.4 fornecida pelo responsável; parâmetros e execução continuam por contratos próprios |
 | P-03 | Godot 4.7.2, Compatibility e GDScript tipado | Base usada nos PRs experimentais; não é evidência de homologação no Editor |
-| P-04 | Isometria 2:1, tiles 64×32 e oito direções | Diretriz do documento mestre e do protótipo |
+| P-04 | Isometria 2:1, tiles 64×32 e oito direções | Histórico do protótipo anterior; substituído por F-11 para novos cenários |
 | P-05 | Penitente com 12 skills em Ferro/Cal/Cinza | Catálogo planejado; parâmetros e implementação completos pendentes |
 | P-06 | Uma classe, Ato I, loot completo | Escopo planejado; contagem geográfica preservada na v0.3 |
-| P-07 | Fórmulas e tick fixo de 25 Hz | Contratos mecânicos a completar; não inferir que o protótipo implementa tudo |
-| P-08 | Componentes, dados, sinais, AStarGrid2D, RNG e save versionado | Diretrizes técnicas preservadas; migração gradual do protótipo |
+| P-07 | Fórmulas e tick fixo de 25 Hz | Histórico da arena; não impor 25 Hz à física lateral; contratos de combate e balanceamento precisam de revisão própria |
+| P-08 | Componentes, dados, sinais, RNG e save versionado; AStarGrid2D no legado | Reaproveitar componentes independentes; AStarGrid2D não define navegação lateral; save ainda planejado |
 | P-09 | Marcos M0–M5 e backlog T-001–T-012 | Histórico de planejamento, não medidor automático de conclusão |
 | P-10 | PR pequeno por tarefa, draft, relatório e sem merge automático | Fluxo para código; atualização documental em main foi pedida separadamente |
 
@@ -71,10 +73,12 @@ implementação permanecem tarefas separadas; nenhuma homologação de gameplay
 | D-06 | Licença | Não foi escolhida por esta atualização |
 | D-07 | Política de spoilers públicos | Documentos editoriais aqui têm aviso e README sem revelações; política definitiva continua pendente |
 | D-08 | Metas de desempenho | Somente após benchmark real |
-| D-09 | Contratos de gameplay | Proposta no PR #4; conciliar referências narrativas v0.2 sem mudar interfaces técnicas ou aprovar números automaticamente |
+| D-09 | Contratos de gameplay | PR #4 é proposta anterior; conciliar narrativa e perspectiva lateral antes de implementar mapas/skills, sem aprovar números automaticamente |
 | D-10 | Morte e retorno em gameplay | Não confundir reload ou respawn com imortalidade canônica |
 | D-11 | Endgame depois do final | Narrativa admite estado anterior ao confronto; persistência/interface precisam de contrato técnico |
 | D-12 | Continuidade v0.4 | Corvo, rosto, nascimento e preço definidos; novela adaptada publicada; ainda faltam datas exatas, nomes de chefes e contratos de cenas, sem bloquear Health |
+| D-13 | Validação lateral | Sensação do salto, controle aéreo, alcance visual, anúncio, sobreposição, dificuldade e acabamento pendentes no Editor |
+| D-14 | Conteúdo lateral | Tiles, layouts, progressão, skills e eventual geração precisam de contratos próprios; não importar medidas isométricas |
 
 ## Precedência e histórico
 
@@ -92,3 +96,4 @@ final por aparecerem numa branch.
 | 24/10/2026 | História expandida fornecida pelo responsável incorporada como v0.3; v0.2 substituída e impactos de contratos registrados |
 | 24/10/2026 | Odran/Maera/Edrin/Lysa, preço do Guardião e quatro finais incorporados à v0.4; cronologia experimental do fragmento explicitada |
 | 25/10/2026 | Novela adaptada publicada em Markdown; README, narrativa, missões, pacto e coordenação conciliados sem merge de código |
+| 25/10/2026 | Visão lateral aprovada, Monster Boy como referência e PR #9 registrado como protótipo com ciclo completo; validação manual pendente, sem merge |

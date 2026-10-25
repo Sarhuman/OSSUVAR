@@ -1,5 +1,10 @@
 > **Contém spoilers completos.** Conciliação literária v0.4.1, de 25/10/2026.
 
+**Perspectiva vigente em 25/10/2026:** visão lateral com plataformas; consulte
+[DIRECAO_LATERAL.md](DIRECAO_LATERAL.md). A mudança preserva o cânone e os quatro
+finais. Parâmetros isométricos dos materiais antigos não orientam os novos mapas.
+
+
 # Novela adaptada e continuidade da campanha
 
 O responsável pediu adaptar OSSUVAR.docx ao cânone com Odran, Maera, Edrin,

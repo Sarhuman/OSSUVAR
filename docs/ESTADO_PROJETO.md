@@ -3,6 +3,10 @@
 Snapshot dos PRs conferido em 25/10/2026. Este texto não substitui os metadados atuais
 dos PRs e não presume que outras sessões pararam de trabalhar.
 
+**Direção vigente:** ação e exploração em 2D lateral com plataformas, conforme
+[DIRECAO_LATERAL.md](DIRECAO_LATERAL.md). **Estado:** protótipo lateral com ciclo
+completo; validação manual no Editor pendente. A main continua documental.
+
 ## Separação de frentes
 
 | Frente | Conteúdo | Efeito desta atualização |
@@ -16,6 +20,7 @@ dos PRs e não presume que outras sessões pararam de trabalhar.
 | PR #6 / codex/P-02B-health-jogador | Health do jogador, sobre o PR #5 | Draft aberto; branch preservada |
 | PR #7 / codex/P-02C-stats-ofensivos | Stats ofensivos, sobre o PR #6 | Draft aberto; branch preservada |
 | PR #8 / codex/P-02D-rng-streams | Streams RNG, sobre o PR #7 | Draft aberto; branch preservada |
+| PR #9 / codex/LATERAL-00-prototipo | Protótipo lateral com ciclo completo, sobre o PR #8; head 045c55a | Draft aberto, sem merge; validação manual pendente |
 
 Antes da primeira atualização documental de 24/10/2026, main continha apenas `README.md` com o título.
 O bootstrap e a arena estavam em PRs draft; a documentação original também
@@ -45,10 +50,12 @@ que não afetem sua tarefa técnica.
 | Sistema | Evidência disponível | Limite |
 | --- | --- | --- |
 | Bootstrap | Relatório do PR #2 | Rever logs atuais e validar no Editor |
-| Arena | Relatório do PR #3: 16 testes locais / 68 asserts à época da entrega | Não representa Ato I ou integração em main |
+| Arena isométrica | Relatório do PR #3: 16 testes locais / 68 asserts à época da entrega | Legado preservado; não é a direção atual |
+| Protótipo lateral | PR #9: início, percurso, combate, chefe provisório, derrota, encerramento e nova partida | Ciclo completo de prova, não campanha; validação manual pendente |
+| Testes laterais e regressões | Relatório do PR #9: gráfico 60/60; headless 59 + 1 pending; importação/lint exit 0 | Resultados do executor, não reexecutados pela revisão documental |
 | Atributos completos | Catálogo de design e prompts | Não assumir que o level-up provisório conclui o sistema |
-| Skills | 12 nomes no planejamento; Giro Ceifador demonstrativo na arena | Árvores, ranks e efeitos completos ainda precisam de execução |
-| Mapas | Arena fixa em branch; geografia e progressão documentadas | Gerador e zonas de campanha não são entregues por documentos |
+| Skills | 12 nomes no planejamento; Giro Ceifador no legado, ataque básico no lateral | Catálogo e efeitos precisam de adaptação lateral e execução |
+| Mapas | Percurso lateral fixo no PR #9; arena anterior preservada | Layouts laterais da campanha e geração ainda planejados |
 | Loot | Item demonstrativo na arena | Raridades, afixos, conjuntos e receitas precisam de dados e testes próprios |
 | História | Cânone v0.4 e novela adaptada com prólogo, 14 capítulos e quatro finais | Prosa e documentação publicadas; diálogos, escolhas, alianças e cenas ainda não implementados |
 | Save e build PC | Instruções no pacote de prompts | Nenhum artefato entregue por esta revisão |
@@ -82,8 +89,10 @@ antecede o nascimento do protagonista. Perder nome/voz não apaga IDs ou saves.
 
 A adaptação literária está em [NOVELA_CANONICA.md](NOVELA_CANONICA.md); seus
 limites e o mapa de atos estão em [INTEGRACAO_NOVELA.md](INTEGRACAO_NOVELA.md).
-A main permanece documental. Os oito PRs abertos estavam em draft no momento
-da consulta; nenhum foi mesclado ou teve base, head ou descrição alterados.
+A main permanece documental. O PR #9 foi conferido aberto, em draft e sem merge,
+com head 045c55a e base codex/P-02D-rng-streams. O estado dos PRs anteriores na
+tabela provém do snapshot documental anterior; esta atualização não muda seus
+refs nem seus metadados.
 
 ARTE-00 e ARTE-01A são entregas externas relatadas pelo executor, não assets
 integrados. O relatório ARTE-01A recebido em 25/10/2026 recomenda provisoriamente
@@ -95,3 +104,14 @@ para a avaliação; iluminação, contraste e sombras continuam pendentes.
 Não foram reproduzidos aqui os testes gráficos ou inspecionadas as capturas
 locais desse relatório. Não há aprovação artística final, liberação comercial
 específica do Meshy ou publicação dos assets de terceiros por esta atualização.
+
+## Mudança de perspectiva
+
+Monster Boy é referência de visão lateral, movimento e legibilidade. Diablo II
+permanece pesquisa anterior de builds/loot, sem manter a isometria como requisito.
+A grade 64×32, oito direções e AStarGrid2D ficam no legado. A prova atual usa
+silhuetas próprias; ARTE-01A não fornece escala de produção para o lateral.
+A narrativa e os quatro finais permanecem intactos.
+
+A próxima validação é humana: salto, controle aéreo, anúncio, alcance visual,
+sobreposição, dificuldade e acabamento. Ver roteiro em DIRECAO_LATERAL.md.

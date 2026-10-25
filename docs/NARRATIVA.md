@@ -1,5 +1,10 @@
 > **Contém spoilers da campanha e dos desfechos.** Cânone v0.4, com conciliação literária v0.4.1 de 25/10/2026. Incorpora as definições do responsável sobre Odran, Maera, Edrin, Lysa, o pacto e os quatro finais. Substitui os pontos conflitantes das versões anteriores. Texto atualizado não significa gameplay implementado.
 
+**Perspectiva vigente em 25/10/2026:** visão lateral com plataformas; consulte
+[DIRECAO_LATERAL.md](DIRECAO_LATERAL.md). A mudança preserva o cânone e os quatro
+finais. Parâmetros isométricos dos materiais antigos não orientam os novos mapas.
+
+
 # OSSUVAR — O Décimo Quarto Sino
 
 O título desta história expandida não altera por si só o nome de trabalho do jogo, **OSSUVAR — Os Treze Sinos**.

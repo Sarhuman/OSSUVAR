@@ -1,5 +1,10 @@
 # Integração narrativa v0.4
 
+**Perspectiva vigente em 25/10/2026:** visão lateral com plataformas; consulte
+[DIRECAO_LATERAL.md](DIRECAO_LATERAL.md). A mudança preserva o cânone e os quatro
+finais. Parâmetros isométricos dos materiais antigos não orientam os novos mapas.
+
+
 Data: 24/10/2026. Fonte: definições do responsável sobre os soldados, pacto,
 Corvo, protagonista, quatro desfechos e consequências das alianças.
 

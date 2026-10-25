@@ -1,5 +1,10 @@
 > **Contém spoilers da história.** Status: v0.1, proposta do Tech Lead. Itens não aprovados estão listados em DECISOES.md.
 
+**Perspectiva vigente em 25/10/2026:** visão lateral com plataformas; consulte
+[DIRECAO_LATERAL.md](DIRECAO_LATERAL.md). A mudança preserva o cânone e os quatro
+finais. Parâmetros isométricos dos materiais antigos não orientam os novos mapas.
+
+
 # Documento Mestre v0.1 — OSSUVAR
 
 Registro histórico de planejamento. A direção narrativa vigente é a v0.4 fornecida pelo responsável. Cosmologia, Halric, chefes e finais do bloco histórico abaixo foram substituídos. Para a continuidade, consulte [NARRATIVA.md](NARRATIVA.md) e [MISSOES_ATO_I.md](MISSOES_ATO_I.md). Consulte também [IMPACTO_NARRATIVO_V04.md](IMPACTO_NARRATIVO_V04.md). A seção original abaixo é preservada; status atuais estão em [DECISOES.md](DECISOES.md) e [ESTADO_PROJETO.md](ESTADO_PROJETO.md). Isso não aprova automaticamente contratos mecânicos nem declara entregas de código.

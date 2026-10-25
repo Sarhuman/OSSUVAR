@@ -1,5 +1,10 @@
 > **Contém spoilers do prólogo e do Ato I.** Cânone v0.4, com conciliação literária de 25/10/2026. Preserva a cadeia v0.3 e incorpora provas e alianças v0.4; implementação e contratos mecânicos continuam separados.
 
+**Perspectiva vigente em 25/10/2026:** visão lateral com plataformas; consulte
+[DIRECAO_LATERAL.md](DIRECAO_LATERAL.md). A mudança preserva o cânone e os quatro
+finais. Parâmetros isométricos dos materiais antigos não orientam os novos mapas.
+
+
 # Prólogo e Ato I — A última vigília
 
 Cenas de referência: prólogo e capítulos 1–6 de [NOVELA_CANONICA.md](NOVELA_CANONICA.md). Os IDs abaixo permanecem documentais e não são alterados pela numeração literária.
@@ -71,7 +76,7 @@ São referências de conteúdo. Não acrescentam missão, nome definitivo de che
 Manter estados documentais `unavailable`, `available`, `active`, `objective_met` e `completed` quando úteis. Conclusões e recompensas têm identidade única e não dependem de uma janela de diálogo aberta.
 
 - Próximo objetivo continua claro após pular o prólogo, morrer, voltar ao hub ou carregar save.
-- Carta, carroça, arquivo, registro da cripta e porta são alcançáveis em toda seed homologada.
+- Carta, carroça, arquivo, registro da cripta e porta são alcançáveis em toda configuração homologada da campanha; geração procedural lateral ainda depende de contrato.
 - Descobertas antecipadas são registradas e reconciliadas sem softlock.
 - Mortos não hostis têm apresentação distinta e não geram objetivo obrigatório de extermínio.
 - Nenhuma fala revela o encontro pessoal de Halric antes do Ato III.

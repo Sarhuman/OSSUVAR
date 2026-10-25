@@ -2,45 +2,82 @@
 
 > Você jurou guardar os mortos. Agora precisa descobrir quem os mantém presos.
 
-ARPG de fantasia sombria em **2D isométrico**, com **Diablo II como referência
-central de experiência** e Project Diablo 2 como referência adicional para mapas
-de endgame. OSSUVAR terá mundo, personagens, narrativa e assets próprios.
+Jogo de ação e exploração em **2D lateral com plataformas**, em Godot.
+**Monster Boy and the Cursed Kingdom** é a referência de perspectiva, movimento
+e legibilidade. OSSUVAR mantém mundo, personagens e narrativa próprios, com
+fantasia sombria e HUD de barras horizontais.
 
-**Estado:** pré-produção com documentação na `main` e um protótipo experimental
-em branch separada. A campanha completa ainda é planejada. PRs e testes locais
-não significam integração ou homologação no Editor.
+**Estado:** protótipo lateral com ciclo completo no [PR #9](https://github.com/Sarhuman/OSSUVAR/pull/9),
+em **draft, sem merge**. A validação manual no Editor está pendente.
+A `main` contém documentação; o código jogável está na branch do PR.
+A campanha completa e seus quatro desfechos continuam planejados.
 
-## Estado do projeto
+## Implementado no protótipo e planejado para a campanha
 
-| Frente | Estado e localização |
+| Frente | Estado e limite |
 | --- | --- |
-| Página principal e narrativa | Documentação nesta branch; cânone v0.4 e novela adaptada v0.4.1; cenas e gameplay da campanha ainda não implementados |
-| Proposta documental original | [PR #1](https://github.com/Sarhuman/OSSUVAR/pull/1); conciliar com a documentação atual antes de integrar |
-| Bootstrap Godot, GUT e CI | [PR #2](https://github.com/Sarhuman/OSSUVAR/pull/2), em revisão |
-| Arena experimental | [PR #3](https://github.com/Sarhuman/OSSUVAR/pull/3), baseado na branch do PR #2 |
-| Health, Stats ofensivos e streams RNG | [PR #5](https://github.com/Sarhuman/OSSUVAR/pull/5), [#6](https://github.com/Sarhuman/OSSUVAR/pull/6), [#7](https://github.com/Sarhuman/OSSUVAR/pull/7) e [#8](https://github.com/Sarhuman/OSSUVAR/pull/8), empilhados e em draft, sem merge |
-| Ato I, catálogo de skills, loot completo e save | Planejados; a arena não conclui esses sistemas |
-| Executável Windows distribuído | Ainda não entregue |
+| Ciclo lateral do PR #9 | Tela inicial, movimento, salto, plataformas, esqueleto, chefe provisório, derrota, encerramento e nova partida |
+| Combate lateral | Preparação, janela ativa, recuperação, dano único por alvo/ataque e bloqueio por obstáculos; valores provisórios |
+| Componentes | Health, Stats ofensivos e contexto RNG existentes reutilizados; isso não conclui atributos, builds ou geração |
+| Apresentação | Arte vetorial própria provisória, câmera e HUD horizontal; acabamento pendente |
+| Narrativa | Cânone e novela documentados; missões, diálogos, alianças e quatro finais ainda não implementados |
+| Progressão e conteúdo | Atributos completos, 12 skills, loot, inventário de campanha e mapas dependem de novos recortes e adaptação lateral |
+| Persistência e distribuição | Sem save da campanha, áudio ou exportação Windows nesta entrega; lançador local não é executável exportado |
+| Arena isométrica | Legado preservado nos PRs anteriores e na base do lateral; não é mais a direção dos novos cenários |
 
-Status dos PRs conferido em 25/10/2026. Consulte os PRs para mudanças posteriores.
-Esta atualização altera somente documentação e não integra o código dos PRs.
+Estado do PR #9 conferido em **25/10/2026**, head
+[`045c55a`](https://github.com/Sarhuman/OSSUVAR/commit/045c55a79cf7a8733b7d188d71e1fe1055353d36).
+O encerramento do protótipo não representa um final da campanha nem acrescenta
+um quinto desfecho. A sentinela é um chefe técnico provisório.
 
-## O jogo
+## Como jogar o protótipo lateral
 
-Exploração de áreas conectadas, combate com compromisso, atributos que importam,
-árvores de habilidades com sinergias e equipamentos que mudam a build. Mapas
-procedurais e desafios repetíveis sustentam a progressão, com um mundo sombrio
-cuja história aparece em ambientes, itens e encontros.
+Use a branch
+[`codex/LATERAL-00-prototipo`](https://github.com/Sarhuman/OSSUVAR/tree/codex/LATERAL-00-prototipo)
+no **Godot 4.7.2 Standard**, renderer **Compatibility**.
 
-Os mapas da campanha e os mapas de endgame são frentes diferentes. A campanha
-constrói a jornada por Norvhal; o endgame acrescentará instâncias modificadas,
-tiers e objetivos próprios depois de suas regras serem definidas.
+No Editor, abra `world/lateral/lateral.tscn` e pressione **F6**.
+**F5 ainda abre a cena isométrica preservada**. Para executar por terminal,
+na raiz do checkout da branch:
+
+```sh
+godot --path . res://world/lateral/lateral.tscn
+```
+
+O comando pressupõe o executável Godot disponível como `godot`; adapte o
+caminho à instalação local. Não execute a partir da `main` documental.
+
+| Controle | Ação |
+| --- | --- |
+| Iniciar / Enter | Começar; após o encerramento, jogar novamente |
+| A/D ou setas | Andar |
+| Espaço | Pular |
+| J | Atacar no chão, na direção em que está olhando |
+| R | Reiniciar com estado novo |
+
+Atravesse as plataformas, enfrente o esqueleto e a sentinela e alcance a saída
+após derrotar o chefe. Morrer permite começar outra partida.
+
+## Validação e limites
+
+O [relatório do PR #9](https://github.com/Sarhuman/OSSUVAR/blob/045c55a79cf7a8733b7d188d71e1fe1055353d36/docs/LATERAL00_RELATORIO.md)
+registra **60/60 testes gráficos** e **59 aprovados + 1 pending legado**
+no headless; importação e lint com exit 0. O percurso foi executado com input
+sintético e física real. São resultados relatados pelo executor, não testes
+reexecutados nesta atualização documental.
+
+**Ainda falta validação humana no Editor:** sensação do salto, controle aéreo,
+alcance visual, anúncio dos ataques, sobreposição, dificuldade e acabamento.
+Os atores colidem com o mundo, mas podem se sobrepor entre si.
+Sem navegação de plataformas da IA, knockback, salto variável, coyote time ou
+transformações nesta prova. A referência Monster Boy não significa que todas
+as mecânicas desse jogo foram adotadas.
 
 ## História
 
 Por trezentos anos, Norvhal acreditou que os **Treze Sinos** de **Ossuvar**
 conduziam os mortos ao descanso. Agora um **Décimo Quarto Sino** foi tocado,
-os túmulos se abriram e algumas vozes parecem repetir aquilo que ninguém quis ouvir.
+os túmulos se abriram e algumas vozes repetem aquilo que ninguém quis ouvir.
 
 Durante uma última vigília, chega uma carta de **Halric**, mestre do protagonista,
 pedindo que ele vá à Cripta dos Pranteadores e desconfie da história oficial.
@@ -54,89 +91,56 @@ para que seu juramento foi criado e o que os vivos escolheram esconder.
 | III — Os Dentes | Minas de ossos nas montanhas |
 | IV — O Campanário | Cidade-catedral e seus níveis mais altos |
 
-Na **Vigília de Cal**, Dagna, Irmã Cael, Velho Tobbe e o Corvo Mudo têm passados
-ligados ao desastre. As alianças do acampamento influenciam quem chega ao final
-e como pode ajudar. Nem todo morto encontrado é imediatamente hostil.
+A **Vigília de Cal** reúne Dagna, Irmã Cael, Velho Tobbe e o Corvo Mudo.
+As alianças influenciam quem chega ao final e como pode ajudar.
+Nem todo morto encontrado é imediatamente hostil.
 
-A pergunta central da campanha é: **os vivos têm o direito de decidir o que
-os mortos devem esquecer?** Revelações e possibilidades finais ficam nos
-documentos com aviso de spoilers.
+A pergunta central permanece: **os vivos têm o direito de decidir o que os
+mortos devem esquecer?** Revelações e quatro desfechos alternativos ficam nos
+documentos com aviso de spoilers. A mudança de perspectiva não muda o cânone.
 
-## Pilares de design
+## Direção e tecnologia
 
-1. **Combate com peso:** duração, compromisso, recuperação e leitura dos ataques.
-2. **Build importa:** atributos, skills, sinergias e equipamento têm efeito real.
-3. **Loot como recompensa:** raridades, afixos, sockets, únicos e conjuntos.
-4. **Mundo hostil e legível:** atmosfera sem esconder perigos e objetivos essenciais.
-5. **Rejogabilidade:** seeds, ciclos de dificuldade e conteúdo repetível.
+Godot **4.7.2 Standard**, GDScript tipado, **Compatibility**, exclusivamente 2D.
+Movimento lateral, gravidade e plataformas substituem a projeção isométrica.
+Tiles 64×32, oito direções e AStarGrid2D pertencem ao protótipo anterior;
+não são requisitos dos novos cenários.
 
-## Escopo planejado do primeiro recorte completo
+Preservar a separação entre apresentação/física e estado dos combatentes.
+Reaproveitar Health, Stats e RNG sem duplicar autoridades.
+Dimensões dos tiles laterais, geração, progressão, fórmulas e skills precisam
+de contratos adequados à nova perspectiva.
 
-- Uma classe, o **Penitente**, com **12 skills** nas árvores Ferro, Cal e Cinza.
-- **Um hub + quatro áreas hostis + uma masmorra + um chefe principal** no Ato I.
-- Áreas: Campos Calcinados, Bosque dos Enforcados, **Estrada dos Ossários** e
-  Mosteiro Sem Voz; masmorra: Cripta dos Pranteadores. A estrada completa a
-  contagem preservada na direção narrativa v0.4 fornecida pelo responsável.
-- Força, Destreza, Vitalidade e Energia; Vida, Mana, Vigor e XP com **barras horizontais**.
-- Itens, inventário em grade, equipamento, afixos, Selos e Palavras de Sino.
-- Geração por seed, Marcos de Cal, Fresta, progressão e save versionado.
-- Três ciclos previstos na arquitetura; mapas de endgame como expansão posterior.
-
-Esses itens são planejamento, não uma lista de funcionalidades concluídas.
-Níveis, dimensões de mapas, fórmulas finais e parâmetros das skills dependem dos
-contratos de gameplay; a revisão da história não define esses números.
-
-## Tecnologia e arquitetura
-
-Godot **4.7.2 Standard**, GDScript tipado, renderer **Compatibility**, isometria
-2:1, tiles **64×32** e oito direções. Projeto exclusivamente 2D.
-
-Diretrizes: lógica pura separada de cenas, composição por componentes, dados em
-Resources, sinais/EventBus, RNG por run/zona, geração testável e save validado e
-versionado. Testes com GUT e lint com gdtoolkit. Metas de desempenho dependem
-de benchmark; o protótipo ainda não substitui a arquitetura final.
-
-## Como experimentar o protótipo
-
-A `main` contém documentação; importe o projeto da branch
-[`codex/prototipo-vigilia`](https://github.com/Sarhuman/OSSUVAR/tree/codex/prototipo-vigilia)
-no **Godot 4.7.2**, pressione **F5** e selecione **Entrar na Vigília**.
-As instruções e os comandos de teste estão no README daquela branch.
-
-A arena contém movimento por clique, dez esqueletos, Giro Ceifador, poções,
-XP, loot demonstrativo, inventário simples e HUD horizontal. Usa cenário e
-personagens provisórios; não contém a campanha completa nem o pipeline final
-de combate. Nenhum executável é distribuído por esta atualização documental.
+Diablo II permanece referência anterior para atributos, builds e loot.
+Project Diablo 2 e seus mapas ficam como pesquisa histórica de endgame,
+a reavaliar se esse conteúdo voltar ao escopo. O objetivo imediato é consolidar
+a experiência lateral; não presumir a implementação de dois jogos completos.
 
 ## Documentação
 
-- [Novela adaptada ao cânone](docs/NOVELA_CANONICA.md) — prólogo, 14 capítulos e quatro desfechos alternativos; **contém spoilers completos**.
-- [Conciliação da novela e documentação](docs/INTEGRACAO_NOVELA.md) — precedência, correspondência dos capítulos e limites da adaptação.
-
+- [Direção lateral e critérios de validação](docs/DIRECAO_LATERAL.md).
 - [Estado das branches e integração](docs/ESTADO_PROJETO.md).
 - [Registro de decisões](docs/DECISOES.md).
-- [Documento Mestre v0.1](docs/DOCUMENTO_MESTRE.md) — histórico de design, arquitetura e backlog; **contém spoilers**.
-- [História expandida v0.4](docs/NARRATIVA.md) — regras do mundo, personagens, atos e finais; **contém spoilers completos**.
-- [Prólogo e missões do Ato I](docs/MISSOES_ATO_I.md) — objetivos, pistas e critérios narrativos; **contém spoilers**.
-- [Pacto e quatro desfechos](docs/PACTO_E_DESFECHOS.md) — provas, personagens, alianças e finais; **contém spoilers completos**.
-- [Impacto da narrativa v0.4](docs/IMPACTO_NARRATIVO_V04.md) — conciliação de contratos e missões.
+- [História expandida](docs/NARRATIVA.md) — **contém spoilers completos**.
+- [Novela adaptada ao cânone](docs/NOVELA_CANONICA.md) — **contém spoilers completos**.
+- [Pacto e quatro desfechos](docs/PACTO_E_DESFECHOS.md) — **contém spoilers completos**.
+- [Prólogo e missões do Ato I](docs/MISSOES_ATO_I.md) — **contém spoilers**.
+- [Conciliação da novela](docs/INTEGRACAO_NOVELA.md).
+- [Impacto narrativo v0.4](docs/IMPACTO_NARRATIVO_V04.md).
+- [Documento Mestre v0.1](docs/DOCUMENTO_MESTRE.md) — histórico, **contém spoilers**; não define a perspectiva atual.
 
-## Gestão e próximos passos
+## Gestão e integração
 
-**@Sarhuman** define prioridades, aprova decisões e valida no Editor. **Claude**
-é a referência de design e arquitetura. O **Codex executor** implementa tarefas
-delimitadas e reporta testes reais. Revisões editoriais não são homologações
-de gameplay. Trabalho de história e trabalho de código avançam em frentes separadas.
+**@Sarhuman** define prioridades e valida no Editor. **Claude** é a referência
+de design e arquitetura; **Codex** executa recortes e relata resultados reais.
+O PR #9 depende da cadeia técnica anterior e permanece em draft.
+Atualização de documentos não integra código nem autoriza merges.
 
-Próximos passos: conciliar os PRs com a documentação atual, preservar o fluxo da
-arena e evoluir componentes, atributos, skills, loot e zonas por tarefas pequenas.
-Não usar o merge de documentação como autorização implícita para mesclar código.
+Próximo passo: validação manual do protótipo, correções delimitadas e revisão
+de integração. Novos sistemas e arte final vêm por tarefas próprias.
 
-## Licença e contribuições
+## Licença
 
-Licença a definir pelo responsável; não há concessão de licença aberta nesta
-página. O fluxo de contribuições externas ainda não está definido. OSSUVAR é
-um projeto independente, sem vínculo com Diablo II ou Project Diablo 2.
-
-
-
+Licença do projeto a definir pelo responsável. A documentação não concede
+licença aberta. Assets externos exigem condições compatíveis antes de inclusão.
+OSSUVAR é independente, sem vínculo com os jogos usados como referência.
